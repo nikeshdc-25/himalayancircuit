@@ -1,46 +1,50 @@
 STATIC:
-Image access
-Content Writings
-General policies
-Footer Link Contents:
-FAQs
-Contacts
-Social Media Links
-Reason to choose
-Quick Links
-Map Integration
-PP, Disclaimer, Reports, T&C
-Affiliations/Partners
-NGOs Links
-Header
+    Image access
+    Content Writings
+    General policies
+    Footer Link Contents:
+    FAQs
+    Contacts
+        Social Media Links
+        Reason to choose
+        Quick Links
+        Map Integration
+    PP, Disclaimer, Reports, T&C
+    Affiliations/Partners
+    NGOs Links
+    Header
 
 DYNAMIC:
-Trekking Related Content Writings
-Tours + Trekking + Cultural Tour + Climbing(Categories) Posts CRUD:
-images
-destination
-duration:
-locations
-pricing:
-Packages per travelers
-itineraries:
-general overviews per day:
-Distance
-Altitude (Max. & Min.)
-Duration
-Accommodation(Food/Lodging)
-Images(Opt.)
-overviews
-information (requirements)
-Blogs CRUD:
-images
-content writing
-date
-heading
-Word of Review via API
-Suggestions as per tour and trekking
-About Us:
-Images
-Description
-Team Rank
-Post
+    Admin:
+        superuser: all access
+        blog_user: 
+        tour&trek_user:
+    Trekking Related Content Writings
+    Tours + Trekking + Cultural Tour + Climbing(Categories) Posts CRUD:
+        images
+        destination
+        duration:
+        locations
+        pricing:
+        Packages per travelers
+        itineraries:
+            general overviews per day:
+                Distance
+                Altitude (Max. & Min.)
+                Duration
+                Accommodation(Food/Lodging)
+                Images(Opt.)
+        overviews
+            information (requirements)
+    Blogs CRUD:
+        images
+        content writing
+        date
+        heading
+    Word of Review via API
+    Suggestions as per tour and trekking
+    About Us:
+        Images
+        Description
+        Team Rank
+        Post
