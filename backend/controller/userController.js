@@ -50,7 +50,9 @@ const login = asyncHandler(async (req, res, next) => {
       user: {
         name: user.username,
         email: user.email,
-        isAdmin: user.isAdmin,
+        isSuperUser: user.isSuperUser,
+        isBlogUser: user.isBlogUser,
+        isTnTUser: user.isTnTUser,
       },
     });
   } else {
@@ -101,7 +103,9 @@ const updateProfile = asyncHandler(async (req, res) => {
        user: {
         name: updatedUser.username,
         email: updatedUser.email,
-        isAdmin: updateUser.isAdmin
+        isSuperUser: user.isSuperUser,
+        isBlogUser: user.isBlogUser,
+        isTnTUser: user.isTnTUser,
     }});
   } else {
     throw new ApiError(404, "User not found!");
@@ -114,7 +118,9 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.username = req.body.username || user.username;
     user.email = req.body.email || user.email;
-    user.isAdmin = Boolean(req.body.isAdmin);
+    user.isSuperUser = Boolean(req.body.isSuperUser);
+    user.isBlogUser = Boolean(req.body.isBlogUser);
+    user.isTnTUser = Boolean(req.body.isTnTUser);
     let updatedUser = await user.save();
     res.send({ message: "User Updated", user: updatedUser });
   } else throw new ApiError(404, "User not found!");
@@ -126,7 +132,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   if (!user) {
     throw new ApiError(404, "User not found!");
   }
-  if (user.isAdmin) {
+  if (user.isSuperUser) {
     throw new ApiError(403, "Cannot delete an admin user!");
   }
   await User.findByIdAndDelete(id);
