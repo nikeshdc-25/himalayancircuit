@@ -15,7 +15,9 @@ const authCheck = asyncHandler (async(req, res, next)=>{
             _id: user._id,
             username: user.username,
             email: user.email,
-            isAdmin: user.isAdmin
+            isSuperUser: user.isSuperUser,
+            isBlogUser: user.isBlogUser,
+            isTnTUser: user.isTnTUser,
         };
         next();
     }
@@ -25,8 +27,8 @@ const authCheck = asyncHandler (async(req, res, next)=>{
 })
 
 const checkAdmin = asyncHandler(async(req, res, next)=>{
-    let isAdmin = req.user?.isAdmin;
-    if(isAdmin) next();
+    let isSuperUser = req.user?.isSuperUser;
+    if(isSuperUser) next();
     else{
         throw new ApiError(403, "You are not authorized to perform this operation!")    //Forbidden Error!
     }

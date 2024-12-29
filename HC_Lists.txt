@@ -17,30 +17,34 @@ Header
 DYNAMIC:
 Trekking Related Content Writings
 Tours + Trekking + Cultural Tour + Climbing(Categories) Posts CRUD:
-images
-destination
-duration:
-locations
-pricing:
-Packages per travelers
-itineraries:
-general overviews per day:
-Distance
-Altitude (Max. & Min.)
-Duration
-Accommodation(Food/Lodging)
-Images(Opt.)
-overviews
-information (requirements)
+	images
+	destination
+	duration:
+	locations
+	pricing:
+		Packages per travelers
+	itineraries:
+		general overviews per day:
+			Distance
+			Altitude (Max. & Min.)
+			Duration
+			Accommodation(Food/Lodging)
+			Images(Opt.)
+	overviews
+	information (requirements)
 Blogs CRUD:
-images
-content writing
-date
-heading
+	images
+	content writing
+	date
+	heading
 Word of Review via API
 Suggestions as per tour and trekking
 About Us:
-Images
-Description
-Team Rank
-Post
+	Images
+	Description
+	Team Rank
+	Post
+Admin
+	Super User(all access)
+	Blog User
+	Tour and Trekking User

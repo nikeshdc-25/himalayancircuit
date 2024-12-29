@@ -18,10 +18,18 @@ const userSchema = new mongoose.Schema(
       required: true,
       minLength: 8,
     },
-    isAdmin: {
+    isSuperUser: {
       type: Boolean,
       default: false,
     },
+    isBlogUser: {
+      type: Boolean,
+      default: false,
+    },
+    isTnTUser: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true }
 );
