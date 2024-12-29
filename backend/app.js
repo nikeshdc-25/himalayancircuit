@@ -25,9 +25,7 @@ app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
 //routes
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/products", productRouter);
-app.use("/api/v1/orders", orderRouter);
-app.use("/api/v1/image", uploadRouter);
+
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
