@@ -15,11 +15,6 @@ STATIC:
     Header
 
 DYNAMIC:
-<<<<<<< HEAD
-    Admin:
-        superuser: all access
-        blog_user: 
-        tour&trek_user:
     Trekking Related Content Writings
     Tours + Trekking + Cultural Tour + Climbing(Categories) Posts CRUD:
         images
@@ -49,7 +44,7 @@ DYNAMIC:
         Description
         Team Rank
         Post
-=======
+
 Trekking Related Content Writings
 Tours + Trekking + Cultural Tour + Climbing(Categories) Posts CRUD:
 	images
@@ -75,6 +70,7 @@ Blogs CRUD:
 Word of Review via API
 Suggestions as per tour and trekking
 About Us:
+    Name
 	Images
 	Description
 	Team Rank
@@ -83,4 +79,4 @@ Admin
 	Super User(all access)
 	Blog User
 	Tour and Trekking User
->>>>>>> 3424489745fb67805a0f60109814a581da2195ff
+

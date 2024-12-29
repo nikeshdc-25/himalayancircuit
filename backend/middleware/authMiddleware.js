@@ -34,4 +34,20 @@ const checkAdmin = asyncHandler(async(req, res, next)=>{
     }
 });
 
-export {authCheck, checkAdmin};
+const checkBlogAdmin = asyncHandler(async(req, res, next)=>{
+    let isBlogUser = req.user?.isBlogUser;
+    if(isBlogUser) next();
+    else{
+        throw new ApiError(403, "BLOGUSER: You are not authorized to perform this operation!")    //Forbidden Error!
+    }
+});
+
+const checkTnTAdmin = asyncHandler(async(req, res, next)=>{
+    let isTnTUser = req.user?.isTnTUser;
+    if(isTnTUser) next();
+    else{
+        throw new ApiError(403, "TnTUSER: You are not authorized to perform this operation!")    //Forbidden Error!
+    }
+});
+
+export {authCheck, checkAdmin, checkBlogAdmin, checkTnTAdmin};
