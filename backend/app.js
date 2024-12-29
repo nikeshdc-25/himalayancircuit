@@ -5,9 +5,6 @@ import logger from "./middleware/loggerMiddleware.js";
 
 //routers import
 import userRouter from "./routes/userRouter.js";
-import productRouter from "./routes/productRouter.js";
-import orderRouter from "./routes/orderRouter.js";
-import uploadRouter from "./routes/uploadRouter.js";
 
 //To set Cookies in the browser
 import CookieParser from "cookie-parser";
