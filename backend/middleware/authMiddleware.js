@@ -24,7 +24,7 @@ const authCheck = asyncHandler (async(req, res, next)=>{
     catch(e){
         throw new ApiError(401, "Invalid Token")
     }
-})
+}) 
 
 const checkAdmin = asyncHandler(async(req, res, next)=>{
     let isSuperUser = req.user?.isSuperUser;
@@ -33,5 +33,20 @@ const checkAdmin = asyncHandler(async(req, res, next)=>{
         throw new ApiError(403, "You are not authorized to perform this operation!")    //Forbidden Error!
     }
 });
+const checkBlogAdmin = asyncHandler(async(req, res, next)=>{
+    let isBlogUser = req.user?.isBlogUser;
+    if(isBlogUser) next();
+    else{
+        throw new ApiError(403, "BLOGUSER: You are not authorized to perform this operation!")    //Forbidden Error!
+    }
+});
 
-export {authCheck, checkAdmin};
+const checkTnTAdmin = asyncHandler(async(req, res, next)=>{
+    let isTnTUser = req.user?.isTnTUser;
+    if(isTnTUser) next();
+    else{
+        throw new ApiError(403, "TnTUSER: You are not authorized to perform this operation!")    //Forbidden Error!
+    }
+});
+
+export {authCheck, checkAdmin, checkBlogAdmin, checkTnTAdmin};
