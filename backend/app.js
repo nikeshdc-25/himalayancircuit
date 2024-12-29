@@ -5,6 +5,8 @@ import logger from "./middleware/loggerMiddleware.js";
 
 //routers import
 import userRouter from "./routes/userRouter.js";
+import aboutusRouter from "./routes/aboutusRouter.js";
+
 
 //To set Cookies in the browser
 import CookieParser from "cookie-parser";
@@ -22,7 +24,7 @@ app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 
 //routes
 app.use("/api/v1/users", userRouter);
-
+app.use("/api/v1/aboutus", aboutusRouter);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
