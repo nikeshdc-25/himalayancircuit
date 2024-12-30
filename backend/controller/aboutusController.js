@@ -32,4 +32,21 @@ const addAboutUs = asyncHandler(async (req, res) => {
       aboutus: updateAboutus,
     });
   });
-  export {addAboutUs, updateAboutus}
+
+  const deleteAboutUs = asyncHandler(async (req, res) => {
+    let id = req.params.id;
+    let aboutus = await AboutUs.findById(id);
+    if (aboutus) {
+      await AboutUs.findByIdAndDelete(id);
+      res.send({ message: "Member removed" });
+    } else {
+      throw new ApiError(404, "Member not found");
+    }
+  });
+
+  const getAboutUs = asyncHandler(async (req, res) => {
+    let aboutus = await AboutUs.find({});
+    res.send(aboutus);
+  });
+
+  export {addAboutUs, updateAboutus, deleteAboutUs, getAboutUs}

@@ -1,10 +1,14 @@
 import express from "express";
-import { addBlogs } from "../controller/blogController.js";
-import { checkAdmin, checkBlogAdmin } from "../middleware/authMiddleware";
+import { addBlogs, deleteBlog, getBlogs, updateBlogs } from "../controller/blogController.js";
+import { authCheck, checkAdmin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 
-router.post("/addblog", checkBlogAdmin, checkAdmin, addBlogs)
+router.post("/", authCheck, addBlogs)
+router.delete("/deleteblog/:id", authCheck, deleteBlog)
+router.put("/updateblog/:id", updateBlogs) 
+router.get("/", getBlogs)
+
 
 export default router;

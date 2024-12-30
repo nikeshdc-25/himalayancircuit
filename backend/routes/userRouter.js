@@ -11,5 +11,5 @@ router.get("/", authCheck, checkAdmin, getUser);
 router.get("/profile", authCheck, getUserProfile);
 router.put("/updateprofile", authCheck, updateProfile)
 router.post("/updateuser/:id", authCheck, checkAdmin, updateUser);
-router.delete("/deleteuser/:id", deleteUser);
+router.delete("/deleteuser/:id", authCheck, checkAdmin, deleteUser);
 export default router;

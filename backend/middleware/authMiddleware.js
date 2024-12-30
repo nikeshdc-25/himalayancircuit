@@ -24,7 +24,7 @@ const authCheck = asyncHandler (async(req, res, next)=>{
     catch(e){
         throw new ApiError(401, "Invalid Token")
     }
-})
+}) 
 
 const checkAdmin = asyncHandler(async(req, res, next)=>{
     let isSuperUser = req.user?.isSuperUser;
