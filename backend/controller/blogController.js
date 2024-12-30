@@ -8,7 +8,8 @@ const addBlogs = asyncHandler(async (req,res)=>{
         title:"Sample Title",
         description:"Sample Description",
         image: "/images/sample.jpg",
-        category: "Nepal"
+        category: "Nepal",
+        tags: ["Annapurna","Everest"]
       }); 
     res.send({ message: `Blog added successfully!`, blog });  
 })
@@ -23,6 +24,7 @@ const updateBlogs =  asyncHandler(async (req, res) =>{
     blog.image = req.body.image || blog.image;
     blog.title = req.body.title || blog.title;
     blog.category = req.body.category || blog.category;
+    blog.tags = req.body.tags || blog.tags;
     let updateBlog = await blog.save();
   
     res.send({
