@@ -64,18 +64,18 @@ const updatePackage = asyncHandler(async (req, res, next) => {
   if (!packages) {
     throw new ApiError(404, "Package Tour not found!");
   }
-  Package.Category = req.body.Category || Package.Category;
-  Package.Area = req.body.Area || Package.Area;
-  Package.SubArea = req.body.SubArea || Package.SubArea;
-  Package.Image = req.body.Image || Package.Image;
-  Package.Description = req.body.Description || Package.Description;
-  Package.Pricing = req.body.Pricing || Package.Pricing;
-  Package.AtAGlance = req.body.AtAGlance || Package.AtAGlance;
-  Package.MapImage = req.body.MapImage || Package.MapImage;
-  Package.Information = req.body.Information || Package.Information;
-  Package.Itinerary = req.body.Itinerary || Package.Itinerary;
+  packages.Category = req.body.Category || packages.Category;
+  packages.Area = req.body.Area || packages.Area;
+  packages.SubArea = req.body.SubArea || packages.SubArea;
+  packages.Image = req.body.Image || packages.Image;
+  packages.Description = req.body.Description || packages.Description;
+  packages.Pricing = req.body.Pricing || packages.Pricing;
+  packages.AtAGlance = req.body.AtAGlance || packages.AtAGlance;
+  packages.MapImage = req.body.MapImage || packages.MapImage;
+  packages.Information = req.body.Information || packages.Information;
+  packages.Itinerary = req.body.Itinerary || packages.Itinerary;
 
-  let updatedPackage = await Package.save();
+  let updatedPackage = await packages.save();
   res.send({
     message: "Package Tour updated successfully!",
     packages: updatedPackage,
@@ -111,7 +111,7 @@ const deletePackage = asyncHandler(async (req, res, next) => {
   if (!packages) {
     throw new ApiError(404, "Package Tour not found!");
   }
-  await Package.findByIdAndDelete(id);
+  await packages.findByIdAndDelete(id);
   res.send({ message: "Package Tour deleted successfully!" });
 });
 
