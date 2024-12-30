@@ -73,8 +73,7 @@ About Us:
     Name
 	Images
 	Description
-	Team Rank
-	Post
+	Team [Rank, Post]
 Admin
 	Super User(all access)
 	Blog User
