@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ghumghamSchema = new mongoose.Schema(
+const packageSchema = new mongoose.Schema(
   {
     Category: {
       type: String,
@@ -93,5 +93,5 @@ const ghumghamSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Ghumgham = mongoose.model("Ghumgham", ghumghamSchema);
-export default Ghumgham;
+const Package = mongoose.model("Package", packageSchema);
+export default Package;
