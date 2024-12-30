@@ -40,7 +40,7 @@ const updateBlogs =  asyncHandler(async (req, res) =>{
     } else {
       throw new ApiError(404, "Blog post not found");
     }
-  });
+  }); 
 
   const getBlogs = asyncHandler(async (req, res) => {
     let getblog = await Blogs.find({});
