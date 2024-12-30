@@ -42,4 +42,9 @@ const updateBlogs =  asyncHandler(async (req, res) =>{
     }
   });
 
-export {addBlogs, updateBlogs, deleteBlog}
+  const getBlogs = asyncHandler(async (req, res) => {
+    let getblog = await Blogs.find({});
+    res.send(getblog);
+  });
+
+export {addBlogs, updateBlogs, deleteBlog, getBlogs}

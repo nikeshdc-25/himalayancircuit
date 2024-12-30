@@ -43,4 +43,10 @@ const addAboutUs = asyncHandler(async (req, res) => {
       throw new ApiError(404, "Member not found");
     }
   });
-  export {addAboutUs, updateAboutus, deleteAboutUs}
+
+  const getAboutUs = asyncHandler(async (req, res) => {
+    let aboutus = await AboutUs.find({});
+    res.send(aboutus);
+  });
+
+  export {addAboutUs, updateAboutus, deleteAboutUs, getAboutUs}
