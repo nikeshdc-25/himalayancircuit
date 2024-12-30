@@ -8,6 +8,8 @@ import userRouter from "./routes/userRouter.js";
 import aboutusRouter from "./routes/aboutusRouter.js";
 import blogRouter from "./routes/blogRouter.js";
 import ghumghamRouter from "./routes/ghumghamRouter.js";
+import uploadRouter from "./routes/uploadRouter.js";
+
 //To set Cookies in the browser
 import CookieParser from "cookie-parser";
 import path from "path";
@@ -27,6 +29,8 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/aboutus", aboutusRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/ghumgham", ghumghamRouter);
+app.use("/api/v1/image", uploadRouter);
+
 
 
 if (process.env.NODE_ENV === "production") {
