@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 router.post("/", authCheck, addBlogs)
-router.delete("/deleteblog/:id", authCheck, deleteBlog)
-router.put("/updateblog/:id", updateBlogs) 
+router.delete("/delete/:id", authCheck, deleteBlog)
+router.put("/update/:id", updateBlogs) 
 router.get("/", getBlogs)
 
 
