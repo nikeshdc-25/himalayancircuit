@@ -61,7 +61,7 @@ function Header() {
               <NavLink to="" className="header-underline nav-link mx-1">
                 About Us
               </NavLink>
-              <NavLink to="" className="header-underline nav-link m-1">
+              <NavLink to="" className="header-underline nav-link mx-1">
                 Blog
               </NavLink>
               <SearchBox/>
