@@ -1,11 +1,8 @@
 import { Container, Navbar, Nav, Badge, NavDropdown } from "react-bootstrap";
 import logo from "../assets/react.svg";
 import {
-  FaShoppingCart,
   FaUser,
   FaHouseUser,
-  FaHeart,
-  FaSignOutAlt,
   FaUserCog,
   FaBoxes,
   FaUserEdit,
@@ -16,9 +13,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
-import { IoMdSettings } from "react-icons/io";
-import { FiActivity } from "react-icons/fi";
-import { CgProfile } from "react-icons/cg";
 import { useUserLogoutMutation } from "../slices/userApiSlice";
 import SearchBox from "./SearchBox";
 
@@ -44,7 +38,7 @@ function Header() {
       <Navbar variant="dark" bg="dark" expand="md" collapseOnSelect>
         <NavLink to="/" className="navbar-brand">
           <Navbar.Brand className="px-2">
-            <img src={logo} alt="logo" /> ECommerce
+            <img src={logo} alt="logo" /> Himalayan Circuit
           </Navbar.Brand>
         </NavLink>
         <Container>
@@ -57,25 +51,7 @@ function Header() {
                 <FaHouseUser /> Home
               </NavLink>
               
-             
-              {userInfo ? (
-                <NavDropdown title={userInfo.name} id="Profile-dropdown">
-                  <NavDropdown.Item onClick={() => navigate("/profile")}>
-                    <CgProfile /> Profile
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <FiActivity /> Activity
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <IoMdSettings /> Setting
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    <FaSignOutAlt /> Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-              )}
-              {userInfo && userInfo.isAdmin && (
+              {userInfo && userInfo.isSuperUser && (
                 <NavDropdown
                   title={<FaUserCog />}
                   id="admin-routes"
@@ -101,7 +77,7 @@ function Header() {
                       navigate("/admin/products");
                     }}
                   >
-                    <FaBoxes /> Products
+                    <FaBoxes /> 
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
