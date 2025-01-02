@@ -19,7 +19,7 @@ const subscribeEmail = asyncHandler(async (req, res) => {
 });
 
 const getSubscribedEmail = asyncHandler(async (req, res) => {
-  let emails = await NewsLetter.find({});
+  let emails = await NewsLetter.find({}).select("email");
   res.send(emails);
 });
 
