@@ -36,15 +36,19 @@ const signup = asyncHandler(async (req, res, next) => {
 //route /api/v1/user/login
 //@access public
 const login = asyncHandler(async (req, res, next) => {
-  let { email, password } = req.body;
+  let { email, password, rememberMe } = req.body;
+
   let user = await User.findOne({ email });
   if (!user) {
     let err = new Error(`${email} is not registered!`);
     err.status = 400;
     throw err;
   }
+
   if (await user.matchPassword(password)) {
-    createToken(res, user._id);
+    let tokenExpiration = rememberMe ? "30d" : "7d";
+
+    createToken(res, user._id, tokenExpiration);
     res.send({
       message: "Login Successful!",
       user: {
@@ -52,7 +56,7 @@ const login = asyncHandler(async (req, res, next) => {
         email: user.email,
         isSuperUser: user.isSuperUser,
         isBlogUser: user.isBlogUser,
-        isTnTUser: user.isTnTUser,
+        isTnTUser: user.isTnTUser
       },
     });
   } else {

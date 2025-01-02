@@ -36,8 +36,7 @@ const router = createBrowserRouter(
         loader={dataLoader}
       />
       <Route path="login" element={<LoginPage />} />
-      <Route path="" element={<AdminRoute />}>
-      </Route>
+      <Route path="" element={<AdminRoute />}></Route>
     </Route>
   )
 );
