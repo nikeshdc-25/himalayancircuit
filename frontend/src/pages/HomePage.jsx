@@ -4,6 +4,7 @@ import Message from "../components/Message";
 import Meta from "../components/Meta";
 import Paginate from "../components/Paginate";
 import { useGetPackagesQuery } from "../slices/packageApiSlice";
+import Package from "../components/package.jsx";
 
 const HomePage = () => {
   const { pageNumber, keyword } = useParams();
@@ -19,7 +20,7 @@ const HomePage = () => {
       {keyword ? (
         <h2>Search Results for "{keyword}"</h2>
       ) : (
-        <h2>Latest Products</h2>
+        <h2>Tour and Trekking</h2>
       )}
       {isLoading ? (
         <h1>Loading...</h1>
@@ -28,9 +29,9 @@ const HomePage = () => {
       ) : (
         <>
           <Row>
-            {data.products.map((product) => (
-              <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
-                <Product product={product} />
+            {data.packages.map((packages) => (
+              <Col sm={12} md={6} lg={4} xl={3} key={packages._id}>
+                <Package packages={packages} />
               </Col>
             ))}
           </Row>

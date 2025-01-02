@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, Badge, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import {
   FaUser,
@@ -27,7 +27,6 @@ function Header() {
       let res = await userLogout().unwrap();
       dispatch(logout()); // Dispatch the logout action
       toast.warn(res.message);
-      navigate("/login");
     } catch (err) {
       toast.error(err.data.error);
     }
@@ -58,13 +57,13 @@ function Header() {
               <NavLink to="" className="header-underline nav-link mx-1">
                 Climbing
               </NavLink>
+              <SearchBox/>
               <NavLink to="" className="header-underline nav-link mx-1">
                 About Us
               </NavLink>
-              <NavLink to="" className="header-underline nav-link m-1">
+              <NavLink to="" className="header-underline nav-link mx-1">
                 Blog
               </NavLink>
-              <SearchBox/>
               
               
               {userInfo && userInfo.isSuperUser && (

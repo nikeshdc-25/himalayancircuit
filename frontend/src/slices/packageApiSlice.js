@@ -4,7 +4,7 @@ import { PACKAGE_URL } from "../constant";
 const packageApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPackages: builder.query({
-      query: () => ({
+      query: ({ keyword, pageNumber }) => ({
         url: PACKAGE_URL,
         params: { keyword, pageNumber }, // /api/v1/package?pageNumber=2&keyword=nuwakot
       }),
