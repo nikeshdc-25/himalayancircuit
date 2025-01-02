@@ -9,6 +9,7 @@ import aboutusRouter from "./routes/aboutusRouter.js";
 import blogRouter from "./routes/blogRouter.js";
 import packageRouter from "./routes/packageRouter.js";
 import uploadRouter from "./routes/uploadRouter.js";
+import newsletterRouter from "./routes/newsletterRouter.js";
 
 //To set Cookies in the browser
 import CookieParser from "cookie-parser";
@@ -30,7 +31,7 @@ app.use("/api/v1/aboutus", aboutusRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/package", packageRouter);
 app.use("/api/v1/image", uploadRouter);
-
+app.use("/api/v1/newsletter", newsletterRouter);
 
 
 if (process.env.NODE_ENV === "production") {
