@@ -10,48 +10,11 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import HomePage, { dataLoader } from "./pages/HomePage.jsx";
-import ProductPage from "./pages/ProductPage.jsx";
-import CartPage from "./pages/CartPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store.js";
-import ShippingPage from "./pages/ShippingPage.jsx";
-import PrivateRoute from "./components/PrivateRoute.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
-import WishlistPage from "./pages/WishlistPage.jsx";
-
-import ConfirmOrder from "./pages/ConfirmOrder.jsx";
-import OrderPage from "./pages/OrderPage.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
-import OrdersPage from "./pages/admin/OrdersPage.jsx";
-import ProductsListPage from "./pages/admin/ProductsPage.jsx";
-import ProductEditPage from "./pages/admin/ProductEditPage.jsx";
 import { HelmetProvider } from "react-helmet-async";
-import ProductsPage from "./pages/admin/ProductsPage.jsx";
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     children: [
-//       {
-//         path: "",
-//         element: <HomePage />,
-//       },
-//       {
-//         path: "product",
-//         element: <ProductPage />,
-//       },
-//       {
-//         path: "cart",
-//         element: <CartPage />,
-//       },
-//       {
-//         path: "signin",
-//         element: <LoginPage />,
-//       },
-//     ],
-//   },
-// ]);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -72,24 +35,8 @@ const router = createBrowserRouter(
         element={<HomePage />}
         loader={dataLoader}
       />
-      <Route path="product/:id" element={<ProductPage />} />
-      <Route path="cart" element={<CartPage />} />
       <Route path="login" element={<LoginPage />} />
-      <Route path="" element={<PrivateRoute />}>
-        <Route path="shipping" element={<ShippingPage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="wishlist" element={<WishlistPage />} />
-        <Route path="order" element={<OrderPage />} />
-        <Route path="confirmorder/:id" element={<ConfirmOrder />} />
-      </Route>
       <Route path="" element={<AdminRoute />}>
-        <Route path="admin/orders" element={<OrdersPage />} />
-        <Route path="admin/products" element={<ProductsPage />} />
-        <Route
-          path="admin/products/page/:pageNumber"
-          element={<ProductsListPage />}
-        />
-        <Route path="admin/product/:id/edit" element={<ProductEditPage />} />
       </Route>
     </Route>
   )

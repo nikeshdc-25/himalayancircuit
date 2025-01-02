@@ -23,7 +23,6 @@ import { useUserLogoutMutation } from "../slices/userApiSlice";
 import SearchBox from "./SearchBox";
 
 function Header() {
-  const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
   const [userLogout, { isLoading }] = useUserLogoutMutation();
   const dispatch = useDispatch();
@@ -57,17 +56,8 @@ function Header() {
               <NavLink to="" className="header-underline nav-link">
                 <FaHouseUser /> Home
               </NavLink>
-              <NavLink to="/cart" className="header-underline nav-link">
-                <FaShoppingCart /> Cart{" "}
-                {cartItems.length > 0 && (
-                  <Badge bg="success" pill>
-                    {cartItems.length}
-                  </Badge>
-                )}
-              </NavLink>
-              <NavLink to="/wishlist" className="header-underline nav-link">
-                <FaHeart /> Wishlist
-              </NavLink>
+              
+             
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="Profile-dropdown">
                   <NavDropdown.Item onClick={() => navigate("/profile")}>
@@ -84,9 +74,6 @@ function Header() {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <NavLink to="/login" className="header-underline nav-link">
-                  <FaUser /> Login
-                </NavLink>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown

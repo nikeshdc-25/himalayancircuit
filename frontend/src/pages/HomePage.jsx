@@ -1,15 +1,13 @@
 import { Row, Col } from "react-bootstrap";
-import Product from "../components/product";
 import { useParams } from "react-router-dom";
-import { useGetProductsQuery } from "../slices/productSlice";
 import Message from "../components/Message";
-import ProductCarousel from "../components/ProductCarousel";
 import Meta from "../components/Meta";
 import Paginate from "../components/Paginate";
+import { useGetPackagesQuery } from "../slices/packageApiSlice";
 
 const HomePage = () => {
   const { pageNumber, keyword } = useParams();
-  const { data, isLoading, error } = useGetProductsQuery({
+  const { data, isLoading, error } = useGetPackagesQuery({
     pageNumber,
     keyword,
   });
@@ -18,7 +16,6 @@ const HomePage = () => {
   return (
     <>
       <Meta />
-      {!keyword && <ProductCarousel />}
       {keyword ? (
         <h2>Search Results for "{keyword}"</h2>
       ) : (
@@ -49,7 +46,7 @@ const HomePage = () => {
 };
 
 export const dataLoader = async () => {
-  let resp = await fetch("/api/v1/products");
+  let resp = await fetch("/api/v1/package");
   let data = await resp.json();
   return data;
 };

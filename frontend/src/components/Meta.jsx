@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 
 function Meta({
-  title = "ECart-51",
-  description = "This is a simple ecomm app",
+  title = "Himalayan Circuit",
+  description = "Himalayan Circuit offers custom luxury tours and budget-friendly vacations in Nepal.",
 }) {
   return (
     <Helmet>

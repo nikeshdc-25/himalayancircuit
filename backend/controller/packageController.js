@@ -58,6 +58,39 @@ const addPackage = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc    Get all packages
+// @route   GET /api/v1/package?pageNumber=3
+// @access  Public
+const getPackage = asyncHandler(async (req, res) => {
+  const pageSize = 4;
+  const page = Number(req.query.pageNumber) || 1;
+  let keyword = req.query.keyword;
+  keyword = keyword
+    ? {
+        $or: [
+          {
+            name: {
+              $regex: keyword,
+              $options: "i",
+            },
+          },
+          {
+            description: {
+              $regex: keyword,
+              $options: "i",
+            },
+          },
+        ],
+      }
+    : {};
+  let packageCount = await Package.countDocuments({ ...keyword });
+  let packages = await Package.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.send({ packages, page, pages: Math.ceil(packageCount / pageSize) });
+});
+
+
 //@desc update an existing Package tour
 //route /api/v1/Package/:id
 //@access private
@@ -90,13 +123,6 @@ const updatePackage = asyncHandler(async (req, res, next) => {
   });
 });
 
-//@desc get all Package tours
-//route /api/v1/Package
-//@access public
-const getPackage = asyncHandler(async (req, res, next) => {
-  let packages = await Package.find({});
-  res.send(packages);
-});
 
 //@desc get a single Package tour by id
 //route /api/v1/Package/:id
@@ -128,5 +154,5 @@ export {
   updatePackage,
   getPackage,
   getSinglePackage,
-  deletePackage,
+  deletePackage
 };
