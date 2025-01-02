@@ -9,7 +9,10 @@ const addPackage = asyncHandler(async (req, res, next) => {
   let packages = await Package.create({
     Category: "Tour",
     Area: "Kathmandu",
-    SubArea: "Nagarkot",
+    SubArea: {
+      Name: "Nagarkot",
+      Images: ["/images/Nagarkot1.jpg", "/images/Nagarkot2.jpg"]
+    },
     Image: "/images/Package-sample.jpg",
     Description: "A scenic tour to Nagarkot for a sunrise view.",
     Pricing: {
@@ -66,7 +69,12 @@ const updatePackage = asyncHandler(async (req, res, next) => {
   }
   packages.Category = req.body.Category || packages.Category;
   packages.Area = req.body.Area || packages.Area;
-  packages.SubArea = req.body.SubArea || packages.SubArea;
+  if (req.body.SubArea) {
+    packages.SubArea = {
+      Name: req.body.SubArea.Name || packages.SubArea.Name,
+      Images: req.body.SubArea.Images || packages.SubArea.Images,
+    };
+  }
   packages.Image = req.body.Image || packages.Image;
   packages.Description = req.body.Description || packages.Description;
   packages.Pricing = req.body.Pricing || packages.Pricing;
@@ -111,7 +119,7 @@ const deletePackage = asyncHandler(async (req, res, next) => {
   if (!packages) {
     throw new ApiError(404, "Package Tour not found!");
   }
-  await packages.findByIdAndDelete(id);
+  await Package.findByIdAndDelete(id);
   res.send({ message: "Package Tour deleted successfully!" });
 });
 

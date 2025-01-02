@@ -12,7 +12,10 @@ const packageSchema = new mongoose.Schema(
       required: true
     },
     SubArea: {
-      type: String
+      type: {
+        Name: { type: String },
+        Images: { type: [String] }
+      }
     },
     Image: {
       type: String,
