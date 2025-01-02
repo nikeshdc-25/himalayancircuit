@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav, Badge, NavDropdown } from "react-bootstrap";
-import logo from "../assets/react.svg";
+import logo from "../assets/logo.png";
 import {
   FaUser,
   FaHouseUser,
@@ -38,7 +38,7 @@ function Header() {
       <Navbar variant="dark" bg="dark" expand="md" collapseOnSelect>
         <NavLink to="/" className="navbar-brand">
           <Navbar.Brand className="px-2">
-            <img src={logo} alt="logo" /> Himalayan Circuit
+            <img src= {logo} alt="logo" className="mx-3"/>
           </Navbar.Brand>
         </NavLink>
         <Container>
@@ -46,10 +46,26 @@ function Header() {
 
           <Navbar.Collapse id="navbar">
             <Nav className="ms-auto">
-              <SearchBox/>
-              <NavLink to="" className="header-underline nav-link">
-                <FaHouseUser /> Home
+            <NavLink to="" className="header-underline nav-link mx-1">
+                Home
+            </NavLink>
+            <NavLink to="" className="header-underline nav-link mx-1">
+                Trekking
               </NavLink>
+              <NavLink to="" className="header-underline nav-link mx-1">
+                Tour
+              </NavLink>
+              <NavLink to="" className="header-underline nav-link mx-1">
+                Climbing
+              </NavLink>
+              <NavLink to="" className="header-underline nav-link mx-1">
+                About Us
+              </NavLink>
+              <NavLink to="" className="header-underline nav-link m-1">
+                Blog
+              </NavLink>
+              <SearchBox/>
+              
               
               {userInfo && userInfo.isSuperUser && (
                 <NavDropdown

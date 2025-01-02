@@ -18,7 +18,7 @@ function SearchBox() {
     <Form onSubmit={submitHandler} className="d-flex">
       <Form.Control
         type="text"
-        placeholder="Search Products"
+        placeholder="Search Packages"
         className="mx-3"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
