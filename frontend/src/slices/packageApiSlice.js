@@ -24,6 +24,12 @@ const packageApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getPackagesByCategory: builder.query({
+      query: (category) => ({
+        url: `${PACKAGE_URL}/category/${category}`,
+        method: "GET",
+      }),
+    }),
     updatePackage: builder.mutation({
       query: ({ id, data }) => ({
         url: `${PACKAGE_URL}/${id}`,

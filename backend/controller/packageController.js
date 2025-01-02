@@ -7,7 +7,7 @@ import ApiError from "../utils/apiError.js";
 //@access private
 const addPackage = asyncHandler(async (req, res, next) => {
   let packages = await Package.create({
-    Category: "Tour",
+    Category: "culturaltour",
     Area: "Kathmandu",
     SubArea: {
       Name: "Nagarkot",
@@ -149,10 +149,25 @@ const deletePackage = asyncHandler(async (req, res, next) => {
   res.send({ message: "Package Tour deleted successfully!" });
 });
 
+//@desc Get packages by category
+//@route GET /api/v1/package/category/:category
+//@access Public
+const getPackagesByCategory = asyncHandler(async (req, res) => {
+  const { category } = req.params;
+    const packages = await Package.find({ Category: category });
+  if (packages.length === 0) {
+    res.status(404).send({ message: `No packages found for category: ${category}` });
+  } else {
+    res.send(packages);
+  }
+});
+
+
 export {
   addPackage,
   updatePackage,
   getPackage,
   getSinglePackage,
-  deletePackage
+  deletePackage,
+  getPackagesByCategory
 };

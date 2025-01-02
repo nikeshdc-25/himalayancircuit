@@ -5,7 +5,7 @@ const packageSchema = new mongoose.Schema(
     Category: {
       type: String,
       required: true,
-      enum: ["Tour", "Trekking", "Cultural Tour", "Climbing"]
+      enum: ["tour", "trekking", "culturaltour", "climbing"]
     },
     Area: {
       type: String,
