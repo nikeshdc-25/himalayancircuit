@@ -162,6 +162,50 @@ const getPackagesByCategory = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc Get all Tour packages
+//route GET /api/v1/Package/tour
+//@access Public
+const getTourOnly = asyncHandler(async (req, res, next) => {
+  let tours = await Package.find({ Category: "tour" });
+  if (!tours || tours.length === 0) {
+    throw new ApiError(404, "No Tour Packages found!");
+  }
+  res.send(tours);
+});
+
+//@desc Get all Trekking packages
+//route GET /api/v1/Package/trekking
+//@access Public
+const getTrekkingOnly = asyncHandler(async (req, res, next) => {
+  let trekking = await Package.find({ Category: "trekking" });
+  if (!trekking || trekking.length === 0) {
+    throw new ApiError(404, "No Trekking Packages found!");
+  }
+  res.send(trekking);
+});
+
+//@desc Get all Cultural Tour packages
+//route GET /api/v1/Package/culturaltour
+//@access Public
+const getCulturalTourOnly = asyncHandler(async (req, res, next) => {
+  let culturalTours = await Package.find({ Category: "culturaltour" });
+  if (!culturalTours || culturalTours.length === 0) {
+    throw new ApiError(404, "No Cultural Tour Packages found!");
+  }
+  res.send(culturalTours);
+});
+
+//@desc Get all Climbing packages
+//route GET /api/v1/Package/climbing
+//@access Public
+const getClimbingOnly = asyncHandler(async (req, res, next) => {
+  let climbing = await Package.find({ Category: "climbing" });
+  if (!climbing || climbing.length === 0) {
+    throw new ApiError(404, "No Climbing Packages found!");
+  }
+  res.send(climbing);
+});
+
 
 export {
   addPackage,
@@ -169,5 +213,9 @@ export {
   getPackage,
   getSinglePackage,
   deletePackage,
-  getPackagesByCategory
+  getPackagesByCategory,
+  getClimbingOnly,
+  getCulturalTourOnly,
+  getTourOnly,
+  getTrekkingOnly
 };
