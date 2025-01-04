@@ -1,0 +1,48 @@
+.reason-to-choose-us {
+    padding: 20px 15px;
+    background-color: #f9f9f9;
+  }
+  
+  .reason-to-choose-us h4 {
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .reason-card {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .reason-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reason-icon img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .reason-card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: #222222;
+  }
+  
+  .reason-card p {
+    font-size: 14px;
+    color: #414141;
+  }
+  
+  @media (max-width: 768px) {
+    .reason-card {
+      margin-bottom: 20px;
+    }
+  }
+  
