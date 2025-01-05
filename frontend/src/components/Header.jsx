@@ -1,8 +1,6 @@
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import {
-  FaUser,
-  FaHouseUser,
   FaUserCog,
   FaBoxes,
   FaUserEdit,
