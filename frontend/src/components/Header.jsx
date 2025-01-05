@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import {
   FaUserCog,
@@ -24,8 +24,9 @@ function Header() {
   const logoutHandler = async () => {
     try {
       let res = await userLogout().unwrap();
-      dispatch(logout()); // Dispatch the logout action
+      dispatch(logout()); 
       toast.warn(res.message);
+      navigate("/login"); 
     } catch (err) {
       toast.error(err.data.error);
     }
@@ -43,7 +44,7 @@ function Header() {
       <Navbar variant="dark" bg="dark" expand="md" collapseOnSelect>
         <NavLink to="/" className="navbar-brand">
           <Navbar.Brand className="px-2">
-            <img src= {logo} alt="logo" className="mx-3"/>
+            <img src={logo} alt="logo" className="mx-3" />
           </Navbar.Brand>
         </NavLink>
         <Container>
@@ -51,10 +52,10 @@ function Header() {
 
           <Navbar.Collapse id="navbar">
             <Nav className="ms-auto">
-            <NavLink to="" className="header-underline nav-link mx-1">
+              <NavLink to="" className="header-underline nav-link mx-1">
                 Home
-            </NavLink>
-            <NavLink to="" className="header-underline nav-link mx-1">
+              </NavLink>
+              <NavLink to="" className="header-underline nav-link mx-1">
                 Trekking
               </NavLink>
               <NavLink to="" className="header-underline nav-link mx-1">
@@ -63,44 +64,22 @@ function Header() {
               <NavLink to="" className="header-underline nav-link mx-1">
                 Climbing
               </NavLink>
-              <SearchBox/>
+              <SearchBox />
               <NavLink to="" className="header-underline nav-link mx-1">
                 About Us
               </NavLink>
               <NavLink to="" className="header-underline nav-link mx-1">
                 Blog
               </NavLink>
-              
-              
-              {userInfo && userInfo.isSuperUser && (
-                <NavDropdown
-                  title={<FaUserCog />}
-                  id="admin-routes"
-                  variant="dark"
-                  bg="dark"
+
+              {userInfo && (userInfo.isSuperUser || userInfo.isBlogUser || userInfo.isTnTUser) && (
+                <NavLink
+                  to="#"
+                  className="header-underline nav-link mx-1"
+                  onClick={logoutHandler} // Call logoutHandler on click
                 >
-                  <NavDropdown.Item
-                    onClick={() => {
-                      navigate("/admin/orders");
-                    }}
-                  >
-                    <FaSitemap /> Orders
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => {
-                      navigate("/admin/users");
-                    }}
-                  >
-                    <FaUserEdit /> Users
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => {
-                      navigate("/admin/products");
-                    }}
-                  >
-                    <FaBoxes /> 
-                  </NavDropdown.Item>
-                </NavDropdown>
+                  Logout
+                </NavLink>
               )}
             </Nav>
           </Navbar.Collapse>

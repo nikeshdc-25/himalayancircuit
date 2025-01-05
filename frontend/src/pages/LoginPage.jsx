@@ -39,6 +39,7 @@ const LoginPage = () => {
       let resp = await login({ email, password, rememberMe }).unwrap();
       dispatch(setCredentials(resp.user));
       toast.success(resp.message);
+      navigate("/admin");
     } catch (err) {
       toast.error(err.data.error);
     }
