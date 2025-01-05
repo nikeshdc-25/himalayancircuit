@@ -1,15 +1,11 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
-<<<<<<< HEAD
-import { FaUser, FaHouseUser, FaUserCog, FaBoxes, FaUserEdit, FaSitemap } from "react-icons/fa";
-=======
 import {
   FaUserCog,
   FaBoxes,
   FaUserEdit,
   FaSitemap,
 } from "react-icons/fa";
->>>>>>> cddda4126a569248e2917556ce997960d094985e
 import "./Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,11 +23,11 @@ function Header() {
   const logoutHandler = async () => {
     try {
       let res = await userLogout().unwrap();
-      dispatch(logout()); // Dispatch the logout action
-      toast.warn(res.message); // Display success message
-      navigate("/login"); // Redirect to login page after logout
+      dispatch(logout()); 
+      toast.warn(res.message);
+      navigate("/login"); 
     } catch (err) {
-      toast.error(err.data.error); // Display error message
+      toast.error(err.data.error);
     }
   };
 
