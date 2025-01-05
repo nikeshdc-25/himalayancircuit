@@ -1,0 +1,20 @@
+.carousel-container {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .carousel img {
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .customize-button-container {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .customize-button-container .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  

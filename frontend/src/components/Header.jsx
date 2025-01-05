@@ -1,6 +1,15 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
+<<<<<<< HEAD
 import { FaUser, FaHouseUser, FaUserCog, FaBoxes, FaUserEdit, FaSitemap } from "react-icons/fa";
+=======
+import {
+  FaUserCog,
+  FaBoxes,
+  FaUserEdit,
+  FaSitemap,
+} from "react-icons/fa";
+>>>>>>> cddda4126a569248e2917556ce997960d094985e
 import "./Header.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

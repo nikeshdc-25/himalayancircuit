@@ -1,13 +1,13 @@
 import React from "react";
 import "./reason.css";
-import fullyCustomizeIcon from "../assets/black_fully.png";
-import atYourOwnPaceIcon from "../assets/black_pace.png";
-import customerSupportIcon from "../assets/black_customer.png";
-import localTourOperatorIcon from "../assets/black_local.png";
-import adventureRelaxationIcon from "../assets/black_adventure.png";
-import experientialProgramsIcon from "../assets/black_experiential.png";
-import bestPriceGuaranteedIcon from "../assets/black_price.png";
-import getInspiredIcon from "../assets/black_inspired.png";
+import fullyCustomizeIcon from "../assets/reasonsIcons/black_fully.png";
+import atYourOwnPaceIcon from "../assets/reasonsIcons/black_pace.png";
+import customerSupportIcon from "../assets/reasonsIcons/black_customer.png";
+import localTourOperatorIcon from "../assets/reasonsIcons/black_local.png";
+import adventureRelaxationIcon from "../assets/reasonsIcons/black_adventure.png";
+import experientialProgramsIcon from "../assets/reasonsIcons/black_experiential.png";
+import bestPriceGuaranteedIcon from "../assets/reasonsIcons/black_price.png";
+import getInspiredIcon from "../assets/reasonsIcons/black_inspired.png";
 
 function ReasonToChooseUs() {
   const reasons = [

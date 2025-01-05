@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReasonToChooseUs from "./components/ReasonToChooseUs";
-
+import SocialPartner from "./components/SocialPartner";
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     </Container>
     <ReasonToChooseUs />
     <Footer className='mt-5'/>
+    <SocialPartner />
     <ToastContainer />
     </>
   )
