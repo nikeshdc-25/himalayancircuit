@@ -13,6 +13,7 @@ import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { useUserLogoutMutation } from "../slices/userApiSlice";
 import SearchBox from "./SearchBox";
+import { useEffect } from "react";
 
 function Header() {
   const { userInfo } = useSelector((state) => state.auth);
@@ -30,8 +31,15 @@ function Header() {
     }
   };
 
+   useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, []);
+
   return (
-    <header>
+    <header style={{ top: 0, width: "100%", zIndex: 1000, marginBottom: 50}}>
       <Navbar variant="dark" bg="dark" expand="md" collapseOnSelect>
         <NavLink to="/" className="navbar-brand">
           <Navbar.Brand className="px-2">

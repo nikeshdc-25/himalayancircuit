@@ -15,6 +15,10 @@ import { Provider } from "react-redux";
 import { store } from "./store.js";
 import AdminRoute from "./components/AdminRoute.jsx";
 import { HelmetProvider } from "react-helmet-async";
+import PaymentInfo from "./pages/PaymentInfoPage.jsx";
+import Disclaimer from "./pages/DesclaimerPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicyPage.jsx";
+import TnCPage from "./pages/TnCPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +40,10 @@ const router = createBrowserRouter(
         loader={dataLoader}
       />
       <Route path="login" element={<LoginPage />} />
+      <Route path="payment-information" element={<PaymentInfo />} />
+      <Route path="disclaimer" element={<Disclaimer />} />
+      <Route path="privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="terms-and-conditions" element={<TnCPage />} />
       <Route path="" element={<AdminRoute />}></Route>
     </Route>
   )

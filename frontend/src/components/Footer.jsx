@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 function Footer() {
@@ -41,38 +42,38 @@ function Footer() {
                 <div className="col-4 offset-1">
                   <ul className="footer-links text-center">
                     <li>
-                      <a href="#">Payment Information</a>
+                      <Link to="/payment-information">Payment Information</Link>
                     </li>
                     <li>
-                      <a href="#">Newsletter</a>
+                      <Link to="/newsletter">Newsletter</Link>
                     </li>
                     <li>
-                      <a href="#">About Us</a>
+                      <Link to="/about-us">About Us</Link>
                     </li>
                     <li>
-                      <a href="#">Contact Form</a>
+                      <Link to="/contact-form">Contact Form</Link>
                     </li>
                     <li>
-                      <a href="#">Blog</a>
+                      <Link to="/blog">Blog</Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-4 offset-2">
                   <ul className="footer-links text-center">
                     <li>
-                      <a href="#">Disclaimer</a>
+                      <Link to="/disclaimer">Disclaimer</Link>
                     </li>
                     <li>
-                      <a href="#">Privacy Policy</a>
+                      <Link to="/privacy-policy">Privacy Policy</Link>
                     </li>
                     <li>
-                      <a href="#">Terms & Conditions</a>
+                      <Link to="/terms-and-conditions">Terms & Conditions</Link>
                     </li>
                     <li>
-                      <a href="#">Report</a>
+                      <Link to="/report">Report</Link>
                     </li>
                     <li>
-                      <a href="#">FAQs</a>
+                      <Link to="/faqs">FAQs</Link>
                     </li>
                   </ul>
                 </div>
@@ -83,7 +84,7 @@ function Footer() {
 
         <div className="row">
           <div className="col-md-12">
-            <p className="text-center" style={{fontSize: 18, color: "white"}}>
+            <p className="text-center" style={{ fontSize: 18, color: "white" }}>
               © Copyright {currentYear} Himalayan Circuit. All Rights Reserved.
             </p>
           </div>
