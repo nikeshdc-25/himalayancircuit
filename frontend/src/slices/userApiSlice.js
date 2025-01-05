@@ -1,8 +1,10 @@
+// userApiSlice.js
 import { USER_URL } from "../constant";
 import { apiSlice } from "./apiSlice";
 
 const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    // Existing endpoints
     login: builder.mutation({
       query: (data) => ({
         url: `${USER_URL}/login`,
@@ -30,6 +32,14 @@ const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    
+    changePassword: builder.mutation({
+      query: ({ currentPassword, newPassword }) => ({
+        url: `${USER_URL}/changepassword`,
+        method: "PUT",
+        body: { currentPassword, newPassword },
+      }),
+    }),
   }),
 });
 
@@ -38,4 +48,5 @@ export const {
   useUserLogoutMutation,
   useUpdatedUserProfileMutation,
   useSignupMutation,
+  useChangePasswordMutation, 
 } = userApiSlice;

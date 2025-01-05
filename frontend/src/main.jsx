@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import { store } from "./store.js";
 import AdminRoute from "./components/AdminRoute.jsx";
 import { HelmetProvider } from "react-helmet-async";
+import AdminPage from "./pages/AdminPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       />
       <Route path="login" element={<LoginPage />} />
       <Route path="" element={<AdminRoute />}></Route>
+      <Route path="/admin" element={<AdminPage />} />
     </Route>
   )
 );
