@@ -5,6 +5,7 @@ import Meta from "../components/Meta";
 import Paginate from "../components/Paginate";
 import { useGetPackagesQuery } from "../slices/packageApiSlice";
 import Package from "../components/package.jsx";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const { pageNumber, keyword } = useParams();
@@ -13,7 +14,11 @@ const HomePage = () => {
     keyword,
   });
   console.log(data);
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
   return (
     <>
       <Meta />

@@ -16,6 +16,12 @@ import { store } from "./store.js";
 import AdminRoute from "./components/AdminRoute.jsx";
 import { HelmetProvider } from "react-helmet-async";
 import AdminPage from "./pages/AdminPage.jsx";
+import PaymentInfo from "./pages/PaymentInfoPage.jsx";
+import Disclaimer from "./pages/DesclaimerPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicyPage.jsx";
+import ReportPage from "./pages/ReportPage.jsx";
+import TnCPage from "./pages/TnCPage.jsx";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +47,7 @@ const router = createBrowserRouter(
       <Route path="disclaimer" element={<Disclaimer />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="terms-and-conditions" element={<TnCPage />} />
+      <Route path="report" element={<ReportPage />} />
       <Route path="" element={<AdminRoute />}></Route>
       <Route path="/admin" element={<AdminPage />} />
     </Route>
