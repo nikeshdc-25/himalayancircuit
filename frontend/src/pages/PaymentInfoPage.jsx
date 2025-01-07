@@ -42,7 +42,7 @@ const PaymentInfo = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{marginTop: 100}}>
       <div>
         <h1 style={styles.heading}>Payment Information</h1>
         <p style={styles.paragraph}>

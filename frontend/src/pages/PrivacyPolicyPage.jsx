@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div >
+    <div style={{marginTop: 100}}>
       <h1 style={header}>Privacy Policy</h1>
       <table style={tableStyle}>
         <tbody>

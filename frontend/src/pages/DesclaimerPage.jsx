@@ -26,7 +26,7 @@ const Disclaimer = () => {
   };
 
   return (
-    <div >
+    <div style={{marginTop: 100}}>
       <h1 style={styles.heading}>Disclaimer</h1>
       <p style={styles.paragraph}>
         Thank you for visiting the Himalayan Circuit Team Pvt Ltd.

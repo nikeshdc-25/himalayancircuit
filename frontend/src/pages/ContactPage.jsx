@@ -71,7 +71,7 @@ const ContactPage = () => {
       sx={{
         maxWidth: 800,
         mx: "auto",
-        mt: 5,
+        mt: 15,
         p: 3,
         borderRadius: "md",
         boxShadow: "lg",

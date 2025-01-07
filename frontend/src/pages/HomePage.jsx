@@ -6,6 +6,7 @@ import Paginate from "../components/Paginate";
 import { useGetPackagesQuery } from "../slices/packageApiSlice";
 import Package from "../components/package.jsx";
 import { useEffect } from "react";
+import CustomCarousel from "../components/Carousel.jsx";
 
 const HomePage = () => {
   const { pageNumber, keyword } = useParams();
@@ -13,7 +14,6 @@ const HomePage = () => {
     pageNumber,
     keyword,
   });
-  console.log(data);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -22,11 +22,7 @@ const HomePage = () => {
   return (
     <>
       <Meta />
-      {keyword ? (
-        <h2>Search Results for "{keyword}"</h2>
-      ) : (
-        <h2>Tour and Trekking</h2>
-      )}
+      {keyword ? <h2>Search Results for "{keyword}"</h2> : <CustomCarousel />}
       {isLoading ? (
         <h1>Loading...</h1>
       ) : error ? (

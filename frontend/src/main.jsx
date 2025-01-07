@@ -27,6 +27,7 @@ import NewsletterPage from "./pages/Newsletter.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path="/" element={<App />}>
       <Route path="" element={<HomePage />} loader={dataLoader} />
       <Route
@@ -44,7 +45,6 @@ const router = createBrowserRouter(
         element={<HomePage />}
         loader={dataLoader}
       />
-      <Route path="login" element={<LoginPage />} />
       <Route path="payment-information" element={<PaymentInfo />} />
       <Route path="disclaimer" element={<Disclaimer />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
@@ -53,8 +53,9 @@ const router = createBrowserRouter(
       <Route path="contact-form" element={<ContactPage />} />
       <Route path="newsletter" element={<NewsletterPage />} />
       <Route path="" element={<AdminRoute />}></Route>
-      <Route path="/admin" element={<AdminPage />} />
     </Route>
+    <Route path="/login" element={<LoginPage />} />
+    </>
   )
 );
 

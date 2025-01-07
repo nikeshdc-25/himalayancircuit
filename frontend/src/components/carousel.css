@@ -1,20 +1,27 @@
 .carousel-container {
-    max-width: 800px;
-    margin: 20px auto;
-  }
+  width: 131%;
+  margin-top: 70px;
+  margin-right: -7.5%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
   
   .carousel img {
-    height: 400px;
+    height: 45rem;
     object-fit: cover;
   }
-  
-  .customize-button-container {
-    text-align: center;
-    margin-top: 15px;
+
+  .carousel-control-prev, .carousel-control-next {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    margin: 20% 10px;
   }
-  
-  .customize-button-container .btn {
-    font-size: 1rem;
-    padding: 10px 20px;
+
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    background-size: 5rem 5rem;
   }
   

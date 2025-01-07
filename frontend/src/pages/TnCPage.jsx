@@ -27,7 +27,7 @@ const TnCPage = () => {
     });
   }, []);
   return (
-    <div>
+    <div style={{marginTop: 100}}>
       <h1 style={styles.header}>Terms & Conditions</h1>
       <p style={styles.text}>
         Please read the following Terms and Conditions that govern the

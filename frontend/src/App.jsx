@@ -11,8 +11,8 @@ import SocialPartner from "./components/SocialPartner";
 function App() {
   return (
     <>
-    <Header />
-    <Container className="my-3">
+    <Header/>
+    <Container className="my-3" >
       <Outlet/>
     </Container>
     <ReasonToChooseUs />
