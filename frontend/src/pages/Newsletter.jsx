@@ -11,15 +11,15 @@ import {
 } from "@mui/joy";
 import { FormControlLabel } from "@mui/material";
 import Message from "../components/Message";
-import { MdReport } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { MdUnsubscribe } from "react-icons/md";
 import { toast } from "react-toastify";
+import { useSubscribeEmailMutation } from "../slices/newsletterApiSlice";
 
-const ReportPage = () => {
+const NewsletterPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",
     privacyConsent: false,
     notRobot: false,
   });
@@ -35,6 +35,7 @@ const ReportPage = () => {
       [name]: type === "checkbox" ? checked : value,
     });
   };
+  const [subscribe, { isLoading }] = useSubscribeEmailMutation();
 
   useEffect(() => {
     window.scrollTo({
@@ -43,14 +44,16 @@ const ReportPage = () => {
     });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (!formData.privacyConsent || !formData.notRobot) {
       toast.error(
         "Please consent to the Privacy Policy and confirm you are not a robot."
       );
       return;
     }
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email) {
       toast.error("All fields are required.");
       return;
     }
@@ -59,9 +62,16 @@ const ReportPage = () => {
       toast.error("Please enter a valid email address.");
       return;
     }
-
-    toast.success("Thank you for your report. We will get back to you soon.");
-    navigate("/");
+    try {
+      let resp = await subscribe({
+        username: formData.name,
+        email: formData.email,
+      }).unwrap();
+      toast.success(resp.message);
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.data?.error || "An error occurred while subscribing.");
+    }
   };
 
   return (
@@ -77,18 +87,19 @@ const ReportPage = () => {
       }}
     >
       <Typography level="h1" sx={{ mb: 2 }}>
-        Report
+        SUBSCRIBE
       </Typography>
       <Typography level="h4" sx={{ mb: 2 }}>
-        We listen to every word. We respond to every email. Use this page to
-        report any activity regarding your experience with us, or anything that
-        you want to tell us. Keeps you safe and informed at every step.
+        STAY CONNECTED.
       </Typography>
       <Typography level="h4" sx={{ mb: 3 }}>
-        Feel free to contact us using the form below.
+        Sign up for our exclusive trip announcements, travel inspiration and
+        expert tips.
       </Typography>
       <Message>
-        DETAILS OF THE REPORT <MdReport style={{ fontSize: 30 }} />
+        By providing your email address, you agree to receive our exclusive trip
+        announcements, travel inspiration and expert tips. You can unsubscribe
+        at any time.
       </Message>
       <FormControl sx={{ mb: 2 }}>
         <FormLabel>Name</FormLabel>
@@ -110,18 +121,6 @@ const ReportPage = () => {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          required
-        />
-      </FormControl>
-
-      <FormControl sx={{ mb: 2 }}>
-        <FormLabel>Message</FormLabel>
-        <Textarea
-          name="message"
-          placeholder="Enter your message..."
-          value={formData.message}
-          onChange={handleChange}
-          minRows={4}
           required
         />
       </FormControl>
@@ -171,17 +170,21 @@ const ReportPage = () => {
           label="I'M NOT A ROBOT!"
         />
       </FormControl>
+      <Message variant="danger">
+        We'll never share your email with anyone else.
+      </Message>
 
       <Button
         onClick={handleSubmit}
         variant="solid"
-        color="primary"
+        color="success"
         sx={{ width: "100%" }}
       >
-        Report <MdReport style={{ fontSize: 25, marginLeft: 5 }} />
+        <MdUnsubscribe style={{ fontSize: 18, marginRight: 5 }} />
+        Subscribe
       </Button>
     </Box>
   );
 };
 
-export default ReportPage;
+export default NewsletterPage;

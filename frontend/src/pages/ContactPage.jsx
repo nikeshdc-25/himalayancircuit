@@ -8,14 +8,16 @@ import {
   Input,
   Textarea,
   Typography,
+  Alert,
 } from "@mui/joy";
 import { FormControlLabel } from "@mui/material";
 import Message from "../components/Message";
-import { MdReport } from "react-icons/md";
+import { LuMessageCircle } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { IoIosSend } from "react-icons/io";
 import { toast } from "react-toastify";
 
-const ReportPage = () => {
+const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -60,7 +62,7 @@ const ReportPage = () => {
       return;
     }
 
-    toast.success("Thank you for your report. We will get back to you soon.");
+    toast.success("Thank you for contacting us. We will get back to you soon.");
     navigate("/");
   };
 
@@ -77,18 +79,21 @@ const ReportPage = () => {
       }}
     >
       <Typography level="h1" sx={{ mb: 2 }}>
-        Report
+        Contact Us
       </Typography>
       <Typography level="h4" sx={{ mb: 2 }}>
-        We listen to every word. We respond to every email. Use this page to
-        report any activity regarding your experience with us, or anything that
-        you want to tell us. Keeps you safe and informed at every step.
+        Contact us for your next dream vacation in Nepal. We help you design and
+        create a tailor-made holiday experience with a dedicated travel expert.
+        Our team of experts takes care of every detail, letting you focus on
+        enjoying your trip of a lifetime. Plus, we have developed our own
+        round-the-clock support system, which keeps you safe and informed at
+        every step.
       </Typography>
       <Typography level="h4" sx={{ mb: 3 }}>
         Feel free to contact us using the form below.
       </Typography>
       <Message>
-        DETAILS OF THE REPORT <MdReport style={{ fontSize: 30 }} />
+        <LuMessageCircle style={{ fontSize: 30 }} /> SEND US YOUR MESSAGE.
       </Message>
       <FormControl sx={{ mb: 2 }}>
         <FormLabel>Name</FormLabel>
@@ -178,10 +183,10 @@ const ReportPage = () => {
         color="primary"
         sx={{ width: "100%" }}
       >
-        Report <MdReport style={{ fontSize: 25, marginLeft: 5 }} />
+        Send <IoIosSend style={{ fontSize: 20, marginLeft: 5 }} />
       </Button>
     </Box>
   );
 };
 
-export default ReportPage;
+export default ContactPage;

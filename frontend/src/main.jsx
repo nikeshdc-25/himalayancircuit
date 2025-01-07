@@ -21,6 +21,8 @@ import Disclaimer from "./pages/DesclaimerPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage.jsx";
 import ReportPage from "./pages/ReportPage.jsx";
 import TnCPage from "./pages/TnCPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import NewsletterPage from "./pages/Newsletter.jsx";
 
 
 const router = createBrowserRouter(
@@ -48,6 +50,8 @@ const router = createBrowserRouter(
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="terms-and-conditions" element={<TnCPage />} />
       <Route path="report" element={<ReportPage />} />
+      <Route path="contact-form" element={<ContactPage />} />
+      <Route path="newsletter" element={<NewsletterPage />} />
       <Route path="" element={<AdminRoute />}></Route>
       <Route path="/admin" element={<AdminPage />} />
     </Route>

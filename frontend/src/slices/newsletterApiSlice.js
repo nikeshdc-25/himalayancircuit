@@ -5,7 +5,7 @@ const newsletterApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     subscribeEmail: builder.mutation({
       query: (data) => ({
-        url: `${NEWSLETTER_URL}/subscribe`,
+        url: `${NEWSLETTER_URL}`,
         method: "POST",
         body: data,
       }),

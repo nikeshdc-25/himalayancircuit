@@ -4,7 +4,7 @@ import ApiError from "../utils/apiError.js";
 import { isEmail } from "../utils/validator.js";
 
 const subscribeEmail = asyncHandler(async (req, res) => {
-  let { email } = req.body;
+  let {username, email } = req.body;
   let emailExists = await NewsLetter.findOne({ email });
   if (!isEmail(email)) {
     throw new ApiError(404, "Invalid Email!");
@@ -14,12 +14,12 @@ const subscribeEmail = asyncHandler(async (req, res) => {
     err.status = 400; //400 for bad requests
     throw err;
   }
-  await NewsLetter.create({ email });
+  await NewsLetter.create({ username, email });
   res.send({ message: `Thank you for subscribing. You will be notified in ${email} !` });
 });
 
 const getSubscribedEmail = asyncHandler(async (req, res) => {
-  let emails = await NewsLetter.find({}).select("email");
+  let emails = await NewsLetter.find({}).select("username email");
   res.send(emails);
 });
 
