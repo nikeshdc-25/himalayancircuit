@@ -79,7 +79,7 @@ const NewsletterPage = () => {
       sx={{
         maxWidth: 800,
         mx: "auto",
-        mt: 5,
+        mt: 10,
         p: 3,
         borderRadius: "md",
         boxShadow: "lg",

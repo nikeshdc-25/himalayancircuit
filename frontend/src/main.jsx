@@ -23,6 +23,7 @@ import ReportPage from "./pages/ReportPage.jsx";
 import TnCPage from "./pages/TnCPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import NewsletterPage from "./pages/Newsletter.jsx";
+import NewsletterListPage from "./pages/admin/NewsletterListPage.jsx";
 
 
 const router = createBrowserRouter(
@@ -52,7 +53,9 @@ const router = createBrowserRouter(
       <Route path="report" element={<ReportPage />} />
       <Route path="contact-form" element={<ContactPage />} />
       <Route path="newsletter" element={<NewsletterPage />} />
-      <Route path="" element={<AdminRoute />}></Route>
+      <Route path="admin/newsletters" element={<NewsletterListPage />} />
+      <Route path="" element={<AdminRoute />}>
+      </Route>
     </Route>
     <Route path="/login" element={<LoginPage />} />
     </>

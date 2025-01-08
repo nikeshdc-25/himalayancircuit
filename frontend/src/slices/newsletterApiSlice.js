@@ -13,11 +13,7 @@ const newsletterApiSlice = apiSlice.injectEndpoints({
     getSubscribedEmail: builder.query({
       query: () => ({
         url: NEWSLETTER_URL,
-        params: { keyword, pageNumber }, // /api/v1/products?pageNumber=2
       }),
-      providesTags: ["Newsletter"],
-      keepUnusedDataFor: 5,
-
     }),
   }),
 });

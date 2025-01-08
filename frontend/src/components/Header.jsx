@@ -12,11 +12,14 @@ import { FaInfoCircle, FaSignOutAlt, FaUserEdit } from "react-icons/fa";
 import { TfiWrite } from "react-icons/tfi";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { MdFlight } from "react-icons/md";
+import { useState } from "react";
 
 function Header() {
   const { userInfo } = useSelector((state) => state.auth);
   const [userLogout, { isLoading }] = useUserLogoutMutation();
   const dispatch = useDispatch();
+  const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
 
   const logoutHandler = async () => {
     try {
@@ -28,9 +31,23 @@ function Header() {
     }
   };
 
+  const handleNavClick = (path) => {
+    setExpanded(false);
+    navigate(path);
+  };
+  const collapseHandler = () => setExpanded(false); // Collapse function for SearchBox
+
   return (
     <header style={{ top: -5, width: "100%", zIndex: 1000, position: "fixed" }}>
-      <Navbar variant="dark" bg="dark" expand="md" collapseOnSelect>
+      <Navbar
+        variant="dark"
+        bg="dark"
+        expand="md"
+        collapseOnSelect
+        expanded={expanded}
+
+        onToggle={() => setExpanded(!expanded)}
+      >
         <NavLink to="/" className="navbar-brand">
           <Navbar.Brand className="px-2">
             <img src={logo} alt="logo" className="mx-3" />
@@ -53,7 +70,7 @@ function Header() {
               <NavLink to="" className="header-underline nav-link mx-1">
                 Climbing
               </NavLink>
-              <SearchBox />
+              <SearchBox  collapseHandler={collapseHandler} />
               <NavLink to="" className="header-underline nav-link mx-1">
                 About Us
               </NavLink>
@@ -100,12 +117,12 @@ function Header() {
                   )}
                   {userInfo.isBlogUser && !userInfo.isSuperUser && (
                     <>
-                    <NavDropdown.Item
-                      onClick={() => handleNavClick("/admin/blogs")}
-                    >
-                      <TfiWrite /> Blogs
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/blogs")}
+                      >
+                        <TfiWrite /> Blogs
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
                         onClick={() => handleNavClick("/admin/newsletters")}
                       >
                         <MdMarkEmailUnread /> Newsletter
