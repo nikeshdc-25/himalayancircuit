@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   TextField,
@@ -15,16 +15,17 @@ import {
 import { RiAdminLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../slices/userApiSlice";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlice";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import logo from "../assets/HClogo.png";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
@@ -41,10 +42,14 @@ const LoginPage = () => {
       toast.success(resp.message);
       navigate("/");
     } catch (err) {
-      toast.error(err.data.error);
+      toast.error(err?.data?.error || "Login failed");
     }
   };
-
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       <div
@@ -72,9 +77,9 @@ const LoginPage = () => {
               position: "relative",
             }}
           >
-            <Avatar sx={{my:-7, position: 'fixed'}}>
+            <Avatar sx={{ my: -7, position: "fixed" }}>
               <a href="/">
-                <img src={logo} alt="Himalayan Circuit"/>
+                <img src={logo} alt="Himalayan Circuit" />
               </a>
             </Avatar>
             <Avatar sx={{ m: 1, bgcolor: "success.main" }}>

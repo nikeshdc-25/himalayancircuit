@@ -63,35 +63,74 @@ function Header() {
 
               {userInfo && (
                 <NavDropdown
-                  title={<MdOutlineAdminPanelSettings style={{fontSize: 22}}/>}
+                  title={
+                    <MdOutlineAdminPanelSettings style={{ fontSize: 22 }} />
+                  }
                   id="admin-routes"
                   className="admin-routes"
                 >
-                  <NavDropdown.Item
-                    onClick={() => handleNavClick("/admin/aboutus")}
-                  >
-                    <FaInfoCircle /> About Us
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => handleNavClick("/admin/users")}
-                  >
-                    <FaUserEdit /> Users
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => handleNavClick("/admin/blogs")}
-                  >
-                    <TfiWrite /> Blogs
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => handleNavClick("/admin/newsletters")}
-                  >
-                    <MdMarkEmailUnread /> Newsletter
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    onClick={() => handleNavClick("/admin/packages")}
-                  >
-                    <MdFlight /> Tours
-                  </NavDropdown.Item>
+                  {userInfo.isSuperUser && (
+                    <>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/aboutus")}
+                      >
+                        <FaInfoCircle /> About Us
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/users")}
+                      >
+                        <FaUserEdit /> Users
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/blogs")}
+                      >
+                        <TfiWrite /> Blogs
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/newsletters")}
+                      >
+                        <MdMarkEmailUnread /> Newsletter
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/packages")}
+                      >
+                        <MdFlight /> Tours
+                      </NavDropdown.Item>
+                    </>
+                  )}
+                  {userInfo.isBlogUser && !userInfo.isSuperUser && (
+                    <>
+                    <NavDropdown.Item
+                      onClick={() => handleNavClick("/admin/blogs")}
+                    >
+                      <TfiWrite /> Blogs
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/newsletters")}
+                      >
+                        <MdMarkEmailUnread /> Newsletter
+                      </NavDropdown.Item>
+                    </>
+                  )}
+                  {userInfo.isTnTUser && !userInfo.isSuperUser && (
+                    <>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/aboutus")}
+                      >
+                        <FaInfoCircle /> About Us
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/newsletters")}
+                      >
+                        <MdMarkEmailUnread /> Newsletter
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => handleNavClick("/admin/packages")}
+                      >
+                        <MdFlight /> Tours
+                      </NavDropdown.Item>
+                    </>
+                  )}
                   <NavDropdown.Item onClick={logoutHandler}>
                     <FaSignOutAlt /> Logout
                   </NavDropdown.Item>
