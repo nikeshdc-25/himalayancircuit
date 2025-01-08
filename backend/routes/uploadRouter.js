@@ -19,7 +19,7 @@ const fileFilter = (req, file, cb) => {
   let imagePattern = /\.(jpg|jpeg|png|webp)$/;
   let isMatch = file.originalname.match(imagePattern);
   if (isMatch) cb(null, true);
-  else cb(new ApiError("Only Image File"), false);
+  else cb(new ApiError("Only Image Files Allowed"), false);
 };
 
 const upload = multer({
@@ -29,11 +29,13 @@ const upload = multer({
 
 router.post(
   "/upload",
-  upload.single("image"),
+  upload.array("images", 10), // allow up to 10 images
   asyncHandler(async (req, res) => {
+    const imagePaths = req.files.map((file) => `/${file.path}`);
+
     res.send({
-      message: "Image Uploaded",
-      path: `/${req.file.path}`,
+      message: "Images Uploaded Successfully",
+      paths: imagePaths,
     });
   })
 );

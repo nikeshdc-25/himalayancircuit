@@ -18,7 +18,7 @@ const packageSchema = new mongoose.Schema(
       }
     },
     Image: {
-      type: String,
+      type: [String],
       required: true
     },
     Description: {
@@ -55,7 +55,7 @@ const packageSchema = new mongoose.Schema(
         type: String
       }
     },
-    MapImage: {
+    MapLink: {
       type: String
     },
     Information: {

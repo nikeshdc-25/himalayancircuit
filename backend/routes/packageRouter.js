@@ -9,8 +9,8 @@ router.get("/tour", getTourOnly)
 router.get("/trekking", getTrekkingOnly)
 router.get("/culturaltour", getCulturalTourOnly)
 router.get("/climbing", getClimbingOnly)
-router.delete("/delete/:id", authCheck, deletePackage)
-router.put("/update/:id", authCheck, updatePackage)
+router.delete("/:id", authCheck, deletePackage)
+router.put("/:id", authCheck, updatePackage)
 router.get("/:id", getSinglePackage)
 router.get("/category/:category", getPackagesByCategory);
 

@@ -14,6 +14,7 @@ const HomePage = () => {
     pageNumber,
     keyword,
   });
+  console.log(data);
   useEffect(() => {
     window.scrollTo({
       top: 0,

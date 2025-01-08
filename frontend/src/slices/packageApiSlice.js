@@ -31,9 +31,16 @@ const packageApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     updatePackage: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `${PACKAGE_URL}/${id}`,
+      query: ( data ) => ({
+        url: `${PACKAGE_URL}/${data._id}`,
         method: "PUT",
+        body: data,
+      }),
+    }),
+    uploadPackageImage: builder.mutation({
+      query: (data) => ({
+        url: UPLOAD_URL,
+        method: "POST",
         body: data,
       }),
     }),
@@ -52,4 +59,5 @@ export const {
   useAddPackageMutation,
   useUpdatePackageMutation,
   useDeletePackageMutation,
+  useUploadPackageImageMutation,
 } = packageApiSlice;

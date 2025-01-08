@@ -24,40 +24,47 @@ import TnCPage from "./pages/TnCPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import NewsletterPage from "./pages/Newsletter.jsx";
 import NewsletterListPage from "./pages/admin/NewsletterListPage.jsx";
-
+import TourPackageListPage from "./pages/admin/TourPackageListPage.jsx";
+import TourPackageEditPage from "./pages/admin/TourPackageEditPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    <Route path="/" element={<App />}>
-      <Route path="" element={<HomePage />} loader={dataLoader} />
-      <Route
-        path="search/:keyword"
-        element={<HomePage />}
-        loader={dataLoader}
-      />
-      <Route
-        path="search/:keyword/page/:pageNumber"
-        element={<HomePage />}
-        loader={dataLoader}
-      />
-      <Route
-        path="page/:pageNumber"
-        element={<HomePage />}
-        loader={dataLoader}
-      />
-      <Route path="payment-information" element={<PaymentInfo />} />
-      <Route path="disclaimer" element={<Disclaimer />} />
-      <Route path="privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="terms-and-conditions" element={<TnCPage />} />
-      <Route path="report" element={<ReportPage />} />
-      <Route path="contact-form" element={<ContactPage />} />
-      <Route path="newsletter" element={<NewsletterPage />} />
-      <Route path="admin/newsletters" element={<NewsletterListPage />} />
-      <Route path="" element={<AdminRoute />}>
+      <Route path="/" element={<App />}>
+        <Route path="" element={<HomePage />} loader={dataLoader} />
+        <Route
+          path="search/:keyword"
+          element={<HomePage />}
+          loader={dataLoader}
+        />
+        <Route
+          path="search/:keyword/page/:pageNumber"
+          element={<HomePage />}
+          loader={dataLoader}
+        />
+        <Route
+          path="page/:pageNumber"
+          element={<HomePage />}
+          loader={dataLoader}
+        />
+        <Route path="payment-information" element={<PaymentInfo />} />
+        <Route path="disclaimer" element={<Disclaimer />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="terms-and-conditions" element={<TnCPage />} />
+        <Route path="report" element={<ReportPage />} />
+        <Route path="contact-form" element={<ContactPage />} />
+        <Route path="newsletter" element={<NewsletterPage />} />
+        <Route path="admin/newsletters" element={<NewsletterListPage />} />
+        <Route path="admin/packages" element={<TourPackageListPage />} />
+        <Route
+          path="admin/packages/page/:pageNumber"
+          element={<TourPackageListPage />}
+        />
+        <Route path="admin/package/:id/edit" element={<TourPackageEditPage />} />
+
+        <Route path="" element={<AdminRoute />}></Route>
       </Route>
-    </Route>
-    <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </>
   )
 );

@@ -25,9 +25,9 @@ const addPackage = asyncHandler(async (req, res, next) => {
       Days: 2,
       Fitness: "Moderate",
       Season: "Spring, Autumn",
-      Route_Grade: "Easy",
+      RouteGrade: "Easy",
     },
-    MapImage: "/images/Package-map.jpg",
+    MapLink: "/images/Package-map.jpg",
     Information: {
       Inclusion: "Transportation, Guide, Accommodation, Meals",
       Exclusion: "Personal Expenses, Drinks, Tips",
@@ -54,7 +54,7 @@ const addPackage = asyncHandler(async (req, res, next) => {
 
   res.send({
     message: "Package Tour added successfully!",
-    packages,
+    packages
   });
 });
 
@@ -112,7 +112,7 @@ const updatePackage = asyncHandler(async (req, res, next) => {
   packages.Description = req.body.Description || packages.Description;
   packages.Pricing = req.body.Pricing || packages.Pricing;
   packages.AtAGlance = req.body.AtAGlance || packages.AtAGlance;
-  packages.MapImage = req.body.MapImage || packages.MapImage;
+  packages.MapLink = req.body.MapLink || packages.MapLink;
   packages.Information = req.body.Information || packages.Information;
   packages.Itinerary = req.body.Itinerary || packages.Itinerary;
 
@@ -137,7 +137,7 @@ const getSinglePackage = asyncHandler(async (req, res, next) => {
 });
 
 //@desc delete a Package tour
-//route /api/v1/Package/:id
+//route /api/v1/package/:id
 //@access private
 const deletePackage = asyncHandler(async (req, res, next) => {
   let id = req.params.id;
