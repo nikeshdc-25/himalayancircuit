@@ -52,7 +52,7 @@ const addPackage = asyncHandler(async (req, res, next) => {
   });
 
   res.send({
-    message: "Package Tour added successfully!",
+    message: `Package Tour added successfully!`,
     packages
   });
 });
@@ -61,7 +61,7 @@ const addPackage = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/package?pageNumber=3
 // @access  Public
 const getPackage = asyncHandler(async (req, res) => {
-  const pageSize = 4;
+  const pageSize = 8;
   const page = Number(req.query.pageNumber) || 1;
   let keyword = req.query.keyword;
   keyword = keyword
@@ -116,7 +116,7 @@ const updatePackage = asyncHandler(async (req, res, next) => {
 
   let updatedPackage = await packages.save();
   res.send({
-    message: "Package Tour updated successfully!",
+    message: `Package ${packages.Category} updated successfully!`,
     packages: updatedPackage,
   });
 });

@@ -1,5 +1,5 @@
 .carousel-container {
-  width: 131%;
+  width: 128%;
   margin-top: 70px;
   margin-right: -7.5%;
   position: relative;
@@ -9,7 +9,7 @@
 
   
   .carousel img {
-    height: 45rem;
+    height: 42rem;
     object-fit: cover;
   }
 

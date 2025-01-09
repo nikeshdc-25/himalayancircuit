@@ -15,7 +15,6 @@ import { Provider } from "react-redux";
 import { store } from "./store.js";
 import AdminRoute from "./components/AdminRoute.jsx";
 import { HelmetProvider } from "react-helmet-async";
-import AdminPage from "./pages/AdminPage.jsx";
 import PaymentInfo from "./pages/PaymentInfoPage.jsx";
 import Disclaimer from "./pages/DesclaimerPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage.jsx";
@@ -26,6 +25,7 @@ import NewsletterPage from "./pages/Newsletter.jsx";
 import NewsletterListPage from "./pages/admin/NewsletterListPage.jsx";
 import TourPackageListPage from "./pages/admin/TourPackageListPage.jsx";
 import TourPackageEditPage from "./pages/admin/TourPackageEditPage.jsx";
+import UsersPage from "./pages/admin/UsersPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,15 +54,20 @@ const router = createBrowserRouter(
         <Route path="report" element={<ReportPage />} />
         <Route path="contact-form" element={<ContactPage />} />
         <Route path="newsletter" element={<NewsletterPage />} />
-        <Route path="admin/newsletters" element={<NewsletterListPage />} />
-        <Route path="admin/packages" element={<TourPackageListPage />} />
-        <Route
-          path="admin/packages/page/:pageNumber"
-          element={<TourPackageListPage />}
-        />
-        <Route path="admin/package/:id/edit" element={<TourPackageEditPage />} />
 
-        <Route path="" element={<AdminRoute />}></Route>
+        <Route path="" element={<AdminRoute />}>
+          <Route path="admin/newsletters" element={<NewsletterListPage />} />
+          <Route path="admin/packages" element={<TourPackageListPage />} />
+          <Route path="admin/users" element={<UsersPage />} />
+          <Route
+            path="admin/packages/page/:pageNumber"
+            element={<TourPackageListPage />}
+          />
+          <Route
+            path="admin/package/:id/edit"
+            element={<TourPackageEditPage />}
+          />
+        </Route>
       </Route>
       <Route path="/login" element={<LoginPage />} />
     </>

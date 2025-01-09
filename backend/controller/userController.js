@@ -56,7 +56,7 @@ const login = asyncHandler(async (req, res, next) => {
         email: user.email,
         isSuperUser: user.isSuperUser,
         isBlogUser: user.isBlogUser,
-        isTnTUser: user.isTnTUser
+        isTnTUser: user.isTnTUser,
       },
     });
   } else {
@@ -103,14 +103,16 @@ const updateProfile = asyncHandler(async (req, res) => {
       user.password = req.body.password; //If new password is given, it should be hashed.
     }
     let updatedUser = await user.save();
-    res.send({ message: "User Updated Successfully!",
-       user: {
+    res.send({
+      message: "User Updated Successfully!",
+      user: {
         name: updatedUser.username,
         email: updatedUser.email,
         isSuperUser: user.isSuperUser,
         isBlogUser: user.isBlogUser,
         isTnTUser: user.isTnTUser,
-    }});
+      },
+    });
   } else {
     throw new ApiError(404, "User not found!");
   }
@@ -142,6 +144,30 @@ const deleteUser = asyncHandler(async (req, res) => {
   await User.findByIdAndDelete(id);
   res.send({ message: "User deleted Successfully!" });
 });
+//@desc update user roles
+//route /api/v1/user/updateuserrole/:id
+//@access private/admin only
+const updateUserRole = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body; // role can be 'isSuperUser', 'isBlogUser', or 'isTnTUser'
+
+  if (!["isSuperUser", "isBlogUser", "isTnTUser"].includes(role)) {
+    throw new ApiError(400, "Invalid role specified!");
+  }
+  let user = await User.findById(id);
+  if (!user) {
+    throw new ApiError(404, "User not found!");
+  }
+  user.isSuperUser = false;
+  user.isBlogUser = false;
+  user.isTnTUser = false;
+  user[role] = true;
+  await user.save();
+
+  res.send({
+    message: `User role updated to ${role.replace("is", "")}!`,
+  });
+});
 
 const changePassword = async (req, res) => {
   try {
@@ -149,7 +175,7 @@ const changePassword = async (req, res) => {
     if (!currentPassword || !newPassword) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    const user = await User.findById(req.user.id); 
+    const user = await User.findById(req.user.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -182,4 +208,5 @@ export {
   updateUser,
   deleteUser,
   changePassword,
+  updateUserRole,
 };
