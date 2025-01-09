@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { PACKAGE_URL } from "../constant";
+import {  DELETE_URL, PACKAGE_URL, UPLOAD_URL } from "../constant";
 
 const packageApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -44,6 +44,12 @@ const packageApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    deletePackageImage: builder.mutation({
+      query: (data) => ({
+        url: `${DELETE_URL}/${data}`,
+        method: "DELETE",
+      }),
+    }),    
     deletePackage: builder.mutation({
       query: (id) => ({
         url: `${PACKAGE_URL}/${id}`,
@@ -60,4 +66,5 @@ export const {
   useUpdatePackageMutation,
   useDeletePackageMutation,
   useUploadPackageImageMutation,
+  useDeletePackageImageMutation,
 } = packageApiSlice;

@@ -5,3 +5,4 @@ export const BLOG_URL = "/api/v1/blog";
 export const PACKAGE_URL = "/api/v1/package";
 export const NEWSLETTER_URL = "/api/v1/newsletter";
 export const UPLOAD_URL = "/api/v1/image/upload";
+export const DELETE_URL = "/api/v1/image/delete";

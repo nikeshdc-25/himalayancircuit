@@ -11,9 +11,8 @@ const addPackage = asyncHandler(async (req, res, next) => {
     Area: "Kathmandu",
     SubArea: {
       Name: "Nagarkot",
-      Images: ["/images/Nagarkot1.jpg", "/images/Nagarkot2.jpg"]
     },
-    Image: "/images/Package-sample.jpg",
+    Images: [],
     Description: "A scenic tour to Nagarkot for a sunrise view.",
     Pricing: {
       Standard: 1500,
@@ -105,10 +104,9 @@ const updatePackage = asyncHandler(async (req, res, next) => {
   if (req.body.SubArea) {
     packages.SubArea = {
       Name: req.body.SubArea.Name || packages.SubArea.Name,
-      Images: req.body.SubArea.Images || packages.SubArea.Images,
     };
   }
-  packages.Image = req.body.Image || packages.Image;
+  packages.Images = req.body.Images || packages.Images,
   packages.Description = req.body.Description || packages.Description;
   packages.Pricing = req.body.Pricing || packages.Pricing;
   packages.AtAGlance = req.body.AtAGlance || packages.AtAGlance;

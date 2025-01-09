@@ -4,11 +4,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FormContainer from "../../components/FormContainer";
 import {
+  useDeletePackageImageMutation,
   useGetSinglePackageQuery,
   useUpdatePackageMutation,
   useUploadPackageImageMutation,
 } from "../../slices/packageApiSlice";
 import { FaCalendarDays } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
+
 
 function TourPackageEditPage() {
   const [area, setArea] = useState("");
@@ -65,6 +68,8 @@ function TourPackageEditPage() {
     useUpdatePackageMutation();
   const [uploadTourImage, { isLoading: uploadingImage }] =
     useUploadPackageImageMutation();
+    const [deleteTourImage, { isLoading: deletingImage }] =
+    useDeletePackageImageMutation();  
 
   useEffect(() => {
     if (tourPackage) {
@@ -75,7 +80,7 @@ function TourPackageEditPage() {
       setPricing(tourPackage.Pricing);
       setSubArea(tourPackage.SubArea?.Name || "");
       setMap(tourPackage.MapLink);
-      setImage(tourPackage.Image);
+      setImage(tourPackage.Images);
       setInformation(tourPackage.Information);
       setItinerary(tourPackage.Itinerary.map(({ _id, ...rest }) => rest));
     }
@@ -93,7 +98,7 @@ function TourPackageEditPage() {
         Pricing: pricing,
         SubArea: { Name: subArea },
         MapLink: map,
-        Image: image,
+        Images: image,
         Information: information,
         Itinerary: itinerary,
       }).unwrap();
@@ -108,14 +113,28 @@ function TourPackageEditPage() {
   const uploadImageHandler = async (e) => {
     try {
       let formData = new FormData();
-      formData.append("image", e.target.files[0]);
+      Array.from(e.target.files).forEach((file) => {
+        formData.append("images", file);
+      });
       let resp = await uploadTourImage(formData).unwrap();
-      setImage(resp.path);
+
+      setImage((prevImages) => [...prevImages, ...resp.paths]);
       toast.success(resp.message);
     } catch (err) {
       toast.error(err.data.error);
     }
   };
+
+  const deleteImageHandler = async (imagePath) => {
+    try {
+      const resp = await deleteTourImage(imagePath).unwrap();
+      setImage((prevImages) => prevImages.filter((img) => img !== imagePath));
+      toast.success(resp.message);
+    } catch (err) {
+      toast.error(err.data.error);
+    }
+  };
+
 
   return (
     <FormContainer>
@@ -242,11 +261,39 @@ function TourPackageEditPage() {
                 onChange={(e) => setSubArea(e.target.value)}
               />
             </Form.Group>
+            <Form.Group controlId="existingImages" className="mb-3">
+              <Form.Label>
+                <b>Existing Images</b>
+              </Form.Label>
+              <div className="d-flex flex-wrap gap-3">
+                {image?.map((img, index) => (
+                  <div key={index} className="image-preview">
+                    <img
+                      src={img}
+                      alt={`Image ${index + 1}`}
+                      style={{
+                        width: "150px",
+                        height: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      className="mx-2"
+                      onClick={() => deleteImageHandler(img)}
+                    >
+                      <FaTrash />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </Form.Group>
 
             <Form.Group controlId="mainImage" className="mb-3">
               <Form.Label>
                 {" "}
-                <b>Main Image</b>{" "}
+                <b>Images</b>{" "}
               </Form.Label>
               <Form.Control type="file" onChange={uploadImageHandler} />
               {uploadingImage && <p>Uploading image...</p>}
@@ -325,7 +372,7 @@ function TourPackageEditPage() {
                         setItinerary(updatedItinerary);
                       }}
                     >
-                      Remove Day {day.Day}
+                      {day.Day} <FaTrash style={{marginBottom: 5}}/>
                     </Button>
                   </Card.Body>
                 </Card>

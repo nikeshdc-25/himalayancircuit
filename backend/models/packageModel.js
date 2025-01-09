@@ -5,93 +5,89 @@ const packageSchema = new mongoose.Schema(
     Category: {
       type: String,
       required: true,
-      enum: ["tour", "trekking", "culturaltour", "climbing"]
+      enum: ["tour", "trekking", "culturaltour", "climbing"],
     },
     Area: {
       type: String,
-      required: true
+      required: true,
     },
     SubArea: {
       type: {
         Name: { type: String },
-        Images: { type: [String] }
-      }
+      },
     },
-    Image: {
-      type: [String],
-      required: true
-    },
+    Images: { type: [String] },
     Description: {
       type: String,
-      required: true
+      required: true,
     },
     Pricing: {
       Standard: {
         type: Number,
-        required: true
+        required: true,
       },
       Deluxe: {
         type: Number,
-        required: true
-      }
+        required: true,
+      },
     },
     AtAGlance: {
       Distance: {
-        type: String
+        type: String,
       },
       Altitude: {
-        type: String
+        type: String,
       },
       Days: {
-        type: Number
+        type: Number,
       },
       Fitness: {
-        type: String
+        type: String,
       },
       Season: {
-        type: String
+        type: String,
       },
       RouteGrade: {
-        type: String
-      }
+        type: String,
+      },
     },
     MapLink: {
-      type: String
+      type: String,
     },
     Information: {
       Inclusion: {
-        type: [String]
+        type: [String],
       },
       Exclusion: {
-        type: [String]
+        type: [String],
       },
       Fees: {
-        type: String
+        type: String,
       },
       Gears: {
-        type: [String]
-      }
+        type: [String],
+      },
     },
     Itinerary: [
       {
         Day: {
           type: Number,
-          required: true
+          required: true,
         },
         Distance: {
-          type: String
+          type: String,
         },
         Altitude: {
-          type: String
+          type: String,
         },
         Duration: {
-          type: String
+          type: String,
         },
         Accommodation: {
-          type: String
-        }
-      }
-    ]
+          type: String,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
