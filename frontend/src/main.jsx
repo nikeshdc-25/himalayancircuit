@@ -26,6 +26,7 @@ import NewsletterListPage from "./pages/admin/NewsletterListPage.jsx";
 import TourPackageListPage from "./pages/admin/TourPackageListPage.jsx";
 import TourPackageEditPage from "./pages/admin/TourPackageEditPage.jsx";
 import UsersPage from "./pages/admin/UsersPage.jsx";
+import FAQPage from "./pages/FAQPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
         <Route path="report" element={<ReportPage />} />
         <Route path="contact-form" element={<ContactPage />} />
         <Route path="newsletter" element={<NewsletterPage />} />
+        <Route path="faqs" element={<FAQPage />} />
 
         <Route path="" element={<AdminRoute />}>
           <Route path="admin/newsletters" element={<NewsletterListPage />} />
