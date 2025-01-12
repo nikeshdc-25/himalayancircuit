@@ -6,6 +6,7 @@ import logger from "./middleware/loggerMiddleware.js";
 //routers import
 import userRouter from "./routes/userRouter.js";
 import aboutusRouter from "./routes/aboutusRouter.js";
+import aboutUsContent from "./routes/aboutusContentRouter.js";
 import blogRouter from "./routes/blogRouter.js";
 import packageRouter from "./routes/packageRouter.js";
 import uploadRouter from "./routes/uploadRouter.js";
@@ -28,6 +29,7 @@ app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 //routes
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/aboutus", aboutusRouter);
+app.use("/api/v1/aboutuscontent", aboutUsContent);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/package", packageRouter);
 app.use("/api/v1/image", uploadRouter);

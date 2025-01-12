@@ -1,12 +1,12 @@
 import express from "express";
-import { addAboutUs, deleteAboutUs, getAboutUs, updateAboutus } from "../controller/aboutusController.js";
 import { authCheck } from "../middleware/authMiddleware.js";
+import { addMember, deleteMember, getMember, updateMember } from "../controller/aboutusController.js";
 
 const router = express.Router();
 
-router.post("/addaboutus", addAboutUs) 
-router.put("/updateaboutus/:id", updateAboutus)
-router.delete("/delete/:id", authCheck, deleteAboutUs) 
-router.get("/", getAboutUs)
+router.post("/", addMember) 
+router.put("/:id", updateMember)
+router.delete("/:id", authCheck, deleteMember) 
+router.get("/", getMember)
 
 export default router;

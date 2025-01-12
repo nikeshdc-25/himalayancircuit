@@ -27,6 +27,7 @@ import TourPackageListPage from "./pages/admin/TourPackageListPage.jsx";
 import TourPackageEditPage from "./pages/admin/TourPackageEditPage.jsx";
 import UsersPage from "./pages/admin/UsersPage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
+import AboutUsEditPage from "./pages/admin/AboutUsEditPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,6 +62,7 @@ const router = createBrowserRouter(
           <Route path="admin/newsletters" element={<NewsletterListPage />} />
           <Route path="admin/packages" element={<TourPackageListPage />} />
           <Route path="admin/users" element={<UsersPage />} />
+          <Route path="admin/aboutus" element={<AboutUsEditPage />} />
           <Route
             path="admin/packages/page/:pageNumber"
             element={<TourPackageListPage />}
