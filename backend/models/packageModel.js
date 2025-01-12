@@ -14,6 +14,7 @@ const packageSchema = new mongoose.Schema(
     SubArea: {
       type: {
         Name: { type: String },
+        SubDescription: { type: String },
       },
     },
     Images: { type: [String] },

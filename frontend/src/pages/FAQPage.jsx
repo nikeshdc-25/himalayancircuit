@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -19,6 +19,13 @@ const FAQPage = () => {
   const handleQuestionChange = (panel) => (event, isExpanded) => {
     setExpandedQuestion(isExpanded ? panel : false);
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <Box

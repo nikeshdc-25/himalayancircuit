@@ -12,7 +12,6 @@ import {
 import { FaCalendarDays } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
 
-
 function TourPackageEditPage() {
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
@@ -28,7 +27,10 @@ function TourPackageEditPage() {
     Standard: 0,
     Deluxe: 0,
   });
-  const [subArea, setSubArea] = useState("");
+  const [subArea, setSubArea] = useState({
+    Name: "",
+    SubDescription: "",
+  });
   const [map, setMap] = useState("");
   const [image, setImage] = useState(null);
   const [information, setInformation] = useState({
@@ -68,8 +70,8 @@ function TourPackageEditPage() {
     useUpdatePackageMutation();
   const [uploadTourImage, { isLoading: uploadingImage }] =
     useUploadPackageImageMutation();
-    const [deleteTourImage, { isLoading: deletingImage }] =
-    useDeletePackageImageMutation();  
+  const [deleteTourImage, { isLoading: deletingImage }] =
+    useDeletePackageImageMutation();
 
   useEffect(() => {
     if (tourPackage) {
@@ -78,7 +80,10 @@ function TourPackageEditPage() {
       setCategory(tourPackage.Category);
       setAtAGlance(tourPackage.AtAGlance);
       setPricing(tourPackage.Pricing);
-      setSubArea(tourPackage.SubArea?.Name || "");
+      setSubArea({
+        Name: tourPackage.SubArea?.Name || "",
+        SubDescription: tourPackage.SubArea?.SubDescription || "",
+      });
       setMap(tourPackage.MapLink);
       setImage(tourPackage.Images);
       setInformation(tourPackage.Information);
@@ -96,7 +101,7 @@ function TourPackageEditPage() {
         Category: category,
         AtAGlance: atAGlance,
         Pricing: pricing,
-        SubArea: { Name: subArea },
+        SubArea: subArea,
         MapLink: map,
         Images: image,
         Information: information,
@@ -134,7 +139,6 @@ function TourPackageEditPage() {
       toast.error(err.data.error);
     }
   };
-
 
   return (
     <FormContainer>
@@ -249,18 +253,41 @@ function TourPackageEditPage() {
               </Row>
             </Form.Group>
 
-            <Form.Group controlId="subArea" className="mb-3">
+            <Form.Group controlId="subAreaName" className="mb-3">
               <Form.Label>
-                {" "}
-                <b>Sub Area</b>{" "}
+                <b>Sub Area Name</b>
               </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter sub area name"
-                value={subArea}
-                onChange={(e) => setSubArea(e.target.value)}
+                value={subArea.Name}
+                onChange={(e) =>
+                  setSubArea((prev) => ({
+                    ...prev,
+                    Name: e.target.value,
+                  }))
+                }
               />
             </Form.Group>
+
+            <Form.Group controlId="subAreaDescription" className="mb-3">
+              <Form.Label>
+                <b>Sub Area Description</b>
+              </Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                placeholder="Enter subarea description"
+                value={subArea.SubDescription}
+                onChange={(e) =>
+                  setSubArea((prev) => ({
+                    ...prev,
+                    SubDescription: e.target.value,
+                  }))
+                }
+              />
+            </Form.Group>
+
             <Form.Group controlId="existingImages" className="mb-3">
               <Form.Label>
                 <b>Existing Images</b>
@@ -372,7 +399,7 @@ function TourPackageEditPage() {
                         setItinerary(updatedItinerary);
                       }}
                     >
-                      {day.Day} <FaTrash style={{marginBottom: 5}}/>
+                      {day.Day} <FaTrash style={{ marginBottom: 5 }} />
                     </Button>
                   </Card.Body>
                 </Card>

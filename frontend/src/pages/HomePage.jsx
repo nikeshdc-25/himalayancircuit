@@ -15,12 +15,13 @@ const HomePage = () => {
     pageNumber,
     keyword,
   });
-  console.log(data);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
   }, []);
+
   return (
     <>
       <Meta />
@@ -31,7 +32,7 @@ const HomePage = () => {
         <Message variant="danger">{error?.data?.error || error.error}</Message>
       ) : (
         <>
-        <CustomizeView />
+          <CustomizeView />
           <Row>
             {data.packages.map((packages) => (
               <Col sm={12} md={6} lg={4} xl={3} key={packages._id}>
@@ -51,8 +52,8 @@ const HomePage = () => {
 };
 
 export const dataLoader = async () => {
-  let resp = await fetch("/api/v1/package");
-  let data = await resp.json();
+  const resp = await fetch("/api/v1/package");
+  const data = await resp.json();
   return data;
 };
 
