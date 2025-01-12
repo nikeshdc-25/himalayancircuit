@@ -45,7 +45,6 @@ function Header() {
         expand="md"
         collapseOnSelect
         expanded={expanded}
-
         onToggle={() => setExpanded(!expanded)}
       >
         <NavLink to="/" className="navbar-brand">
@@ -58,19 +57,19 @@ function Header() {
 
           <Navbar.Collapse id="navbar">
             <Nav className="ms-auto">
-              <NavLink to="/" className="header-underline nav-link mx-1">
-                Home
-              </NavLink>
               <NavLink to="" className="header-underline nav-link mx-1">
+                Tour
+              </NavLink>
+              <NavLink to="/" className="header-underline nav-link mx-1">
                 Trekking
               </NavLink>
               <NavLink to="" className="header-underline nav-link mx-1">
-                Tour
+                Cultural
               </NavLink>
               <NavLink to="" className="header-underline nav-link mx-1">
                 Climbing
               </NavLink>
-              <SearchBox  collapseHandler={collapseHandler} />
+              <SearchBox collapseHandler={collapseHandler} />
               <NavLink to="" className="header-underline nav-link mx-1">
                 About Us
               </NavLink>

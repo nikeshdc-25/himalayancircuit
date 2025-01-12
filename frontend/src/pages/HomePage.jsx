@@ -4,9 +4,10 @@ import Message from "../components/Message";
 import Meta from "../components/Meta";
 import Paginate from "../components/Paginate";
 import { useGetPackagesQuery } from "../slices/packageApiSlice";
-import Package from "../components/package.jsx";
+import Package from "../components/Package.jsx";
 import { useEffect } from "react";
 import CustomCarousel from "../components/Carousel.jsx";
+import CustomizeView from "../components/CustomizeView.jsx";
 
 const HomePage = () => {
   const { pageNumber, keyword } = useParams();
@@ -30,6 +31,7 @@ const HomePage = () => {
         <Message variant="danger">{error?.data?.error || error.error}</Message>
       ) : (
         <>
+        <CustomizeView />
           <Row>
             {data.packages.map((packages) => (
               <Col sm={12} md={6} lg={4} xl={3} key={packages._id}>

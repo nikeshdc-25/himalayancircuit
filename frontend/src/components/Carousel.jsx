@@ -13,7 +13,7 @@ import trekking from "../assets/homepageCarousel/trekking-with-himalayan-circuit
 function CustomCarousel() {
 
   return (
-    <div className="carousel-container">
+    <div className="carousel-container mb-5">
       <Carousel>
         <Carousel.Item>
           <img
